@@ -2,7 +2,7 @@
 <ModSyncNinjaData>
   <ID>db9a51b0-ba7c-4e8d-9a50-71f2dd81ac02</ID>
   <ModName>CaveBiome (Continued)</ModName>
-  <Version>1.0.0.0</Version>
+  <Version>1.0.1.0</Version>
   <SaveBreaking>False</SaveBreaking>
   <Host name="Github">
     <Owner>emipa606</Owner>
@@ -12,7 +12,3 @@
     <Branch>master</Branch>
   </Host>
 </ModSyncNinjaData>
-
-
-
-
