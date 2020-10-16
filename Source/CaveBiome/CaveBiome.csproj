@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3EB8FED6-314E-487B-AEF5-518D4370C4C7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CaveBiome</RootNamespace>
+    <AssemblyName>CaveBiome</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Assemblies\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="GenStep_CaveRiver.cs" />
+    <Compile Include="IncidentWorker_MechClusterCave.cs" />
+    <Compile Include="IncidentWorker_VolcanicWinterCave.cs" />
+    <Compile Include="IncidentWorker_MeteoriteImpactCave.cs" />
+    <Compile Include="IncidentWorker_RaidEnemyCave.cs" />
+    <Compile Include="IncidentWorker_FlashstormCave.cs" />
+    <Compile Include="PlaceWorker_OnlyInCave.cs" />
+    <Compile Include="PlaceWorker_NotInCave.cs" />
+    <Compile Include="Building_AnimalCorpsesGenerator.cs" />
+    <Compile Include="Building_VillagerCorpsesGenerator.cs" />
+    <Compile Include="IncidentWorker_TransportPodCrashInCave.cs" />
+    <Compile Include="IncidentWorker_ResourcePodCrashInCave.cs" />
+    <Compile Include="IncidentWorker_ShipChunkDropInCave.cs" />
+    <Compile Include="IncidentWorker_DefoliatorShipPartCrashInCave.cs" />
+    <Compile Include="IncidentWorker_PsychicEmanatorShipPartCrashInCave.cs" />
+    <Compile Include="IncidentWorker_ShipPartCrashInCave.cs" />
+    <Compile Include="MapComponent_CaveWellLight.cs" />
+    <Compile Include="Util_CaveBiome.cs" />
+    <Compile Include="BiomeWorker_Cave.cs" />
+    <Compile Include="GenStep_CavePlants.cs" />
+    <Compile Include="GameCondition_Cave.cs" />
+    <Compile Include="GenStep_CaveInitializeWeatherAndLight.cs" />
+    <Compile Include="GenStep_FindPlayerStartSpot.cs" />
+    <Compile Include="GenStep_CaveRoof.cs" />
+    <Compile Include="GenStep_CaveElevation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="Krafs.Rimworld.Ref">
+      <Version>1.2.2753</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="CaveworldFlora">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\2259058735\Assemblies\CaveworldFlora.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

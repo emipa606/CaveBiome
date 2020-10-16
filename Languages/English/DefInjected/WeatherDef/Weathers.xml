@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <CaveCalm.label>calm</CaveCalm.label>
+  <CaveCalm.description>A calm cave moment. No penalties or modifiers.</CaveCalm.description>
+
+  <CaveFog.label>fog</CaveFog.label>
+  <CaveFog.description>Fog reduces the accuracy of ranged weapons as if darkness was not enough... Global humidity level is surprisingly high in caves.</CaveFog.description>
+
+  <CaveStorm.label>cave storm</CaveStorm.label>
+  <CaveStorm.description>Cave storm happen when large surface tempest occur. The powerful winds will slow down people a lot.</CaveStorm.description>
+
+  <CaveHardSnow.label>hard snow</CaveHardSnow.label>
+  <CaveHardSnow.description>Snow reduces the accuracy of ranged weapons, extinguishes fire, and slows people down.</CaveHardSnow.description>
+
+
+</LanguageData>
