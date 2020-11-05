@@ -19,7 +19,7 @@ namespace CaveBiome
 
         public override float SkyTargetLerpFactor(Map map)
         {
-            return GameConditionUtility.LerpInOutValue((float)base.TicksPassed, (float)LerpTicks + 1f, (float)LerpTicks, 1f);
+            return GameConditionUtility.LerpInOutValue(TicksPassed, LerpTicks + 1f, LerpTicks, 1f);
         }
         public override SkyTarget? SkyTarget(Map map)
         {

@@ -8,13 +8,7 @@ namespace CaveBiome
     {
         public const float ElevationFreq = 0.03f;
         public const float ElevationFactorCave = 1.5f;
-        public override int SeedPart
-        {
-            get
-            {
-                return 647812558;
-            }
-        }
+        public override int SeedPart => 647812558;
         public override void Generate(Map map, GenStepParams parms)
 		{
             if (map.Biome != Util_CaveBiome.CaveBiomeDef)
@@ -28,7 +22,7 @@ namespace CaveBiome
             ModuleBase perlinMap = new Perlin(ElevationFreq, 1.0, 0.5, 6, Rand.Range(0, 2147483647), QualityMode.High);
 			perlinMap = new ScaleBias(0.5, 0.5, perlinMap);
             NoiseDebugUI.StoreNoiseRender(perlinMap, "Cave: elev base");
-            perlinMap = new Multiply(perlinMap, new Const((double)ElevationFactorCave));
+            perlinMap = new Multiply(perlinMap, new Const(ElevationFactorCave));
             NoiseDebugUI.StoreNoiseRender(perlinMap, "Cave: elev cave-factored");
             
             // Override base elevation grid so the GenStep_Terrain.Generate function uses this one.

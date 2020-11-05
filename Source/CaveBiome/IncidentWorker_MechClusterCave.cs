@@ -8,7 +8,7 @@ namespace CaveBiome
     {
         protected override bool CanFireNowSub(IncidentParms parms)
         {
-            Map map = (Map)parms.target;
+            var map = (Map)parms.target;
             if (map.Biome == Util_CaveBiome.CaveBiomeDef)
             {
                 return false;

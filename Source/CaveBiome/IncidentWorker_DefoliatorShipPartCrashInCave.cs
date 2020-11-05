@@ -5,12 +5,6 @@ namespace CaveBiome
 {
     public class IncidentWorker_DefoliatorShipPartCrashInCave : IncidentWorker_ShipPartCrashInCave
     {
-        protected override int CountToSpawn
-        {
-            get
-            {
-                return Rand.RangeInclusive(1, 1);
-            }
-        }
+        protected override int CountToSpawn => Rand.RangeInclusive(1, 1);
     }
 }

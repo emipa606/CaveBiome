@@ -10,10 +10,10 @@ namespace CaveBiome
     {
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
-            Map map = (Map)parms.target;
+            var map = (Map)parms.target;
             if (map.Biome != Util_CaveBiome.CaveBiomeDef)
             {
-                return base.TryExecute(parms);
+                return TryExecute(parms);
             }
             TryFindRefugeePodSpot(map, out IntVec3 intVec);
             if (intVec.IsValid == false)
@@ -21,7 +21,7 @@ namespace CaveBiome
                 return false;
             }
             Faction faction = Find.FactionManager.FirstFactionOfDef(FactionDefOf.OutlanderRefugee);
-            PawnGenerationRequest request = new PawnGenerationRequest(PawnKindDefOf.SpaceRefugee, faction, PawnGenerationContext.NonPlayer, -1, false, false, false, false, true, false, 20f, false, true, true, false, false, false, false, false, 0, null, 1, null, null, null, null, null);
+            var request = new PawnGenerationRequest(PawnKindDefOf.SpaceRefugee, faction, PawnGenerationContext.NonPlayer, -1, false, false, false, false, true, false, 20f, false, true, true, false, false, false, false, false, 0, null, 1, null, null, null, null, null);
             Pawn pawn = PawnGenerator.GeneratePawn(request);
             HealthUtility.DamageUntilDowned(pawn);
             TaggedString label = "LetterLabelRefugeePodCrash".Translate();

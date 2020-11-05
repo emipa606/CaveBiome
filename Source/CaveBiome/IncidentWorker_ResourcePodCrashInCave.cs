@@ -15,23 +15,31 @@ namespace CaveBiome
 
         private static ThingDef RandomPodContentsDef()
         {
-            bool isLeather(ThingDef d) => d.category == ThingCategory.Item && d.thingCategories != null && d.thingCategories.Contains(ThingCategoryDefOf.Leathers);
-            bool isMeat(ThingDef d) => d.category == ThingCategory.Item && d.thingCategories != null && d.thingCategories.Contains(ThingCategoryDefOf.MeatRaw);
-            int numLeathers = DefDatabase<ThingDef>.AllDefs.Where(isLeather).Count<ThingDef>();
-            int numMeats = DefDatabase<ThingDef>.AllDefs.Where(isMeat).Count<ThingDef>();
+            bool isLeather(ThingDef d)
+            {
+                return d.category == ThingCategory.Item && d.thingCategories != null && d.thingCategories.Contains(ThingCategoryDefOf.Leathers);
+            }
+
+            bool isMeat(ThingDef d)
+            {
+                return d.category == ThingCategory.Item && d.thingCategories != null && d.thingCategories.Contains(ThingCategoryDefOf.MeatRaw);
+            }
+
+            var numLeathers = DefDatabase<ThingDef>.AllDefs.Where(isLeather).Count<ThingDef>();
+            var numMeats = DefDatabase<ThingDef>.AllDefs.Where(isMeat).Count<ThingDef>();
             return (
                 from d in DefDatabase<ThingDef>.AllDefs
                 where d.category == ThingCategory.Item && d.tradeability == Tradeability.Sellable && d.equipmentType == EquipmentType.None && d.BaseMarketValue >= 1f && d.BaseMarketValue < MaxMarketValue && !d.HasComp(typeof(CompHatcher))
                 select d).RandomElementByWeight(delegate(ThingDef d)
                 {
-                    float num = 100f;
+                    var num = 100f;
                     if (isLeather(d))
                     {
-                        num *= 5f / (float)numLeathers;
+                        num *= 5f / numLeathers;
                     }
                     if (isMeat(d))
                     {
-                        num *= 5f / (float)numMeats;
+                        num *= 5f / numMeats;
                     }
                     return num;
                 });
@@ -39,24 +47,24 @@ namespace CaveBiome
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
-            Map map = (Map)parms.target;
+            var map = (Map)parms.target;
             if (map.Biome != Util_CaveBiome.CaveBiomeDef)
             {
-                return base.TryExecute(parms);
+                return TryExecute(parms);
             }
             
-            ThingDef thingDef = IncidentWorker_ResourcePodCrashInCave.RandomPodContentsDef();
-            List<Thing> list = new List<Thing>();
-            float num = (float)Rand.Range(150, 900);
+            ThingDef thingDef = RandomPodContentsDef();
+            var list = new List<Thing>();
+            var num = (float)Rand.Range(150, 900);
             do
             {
                 Thing thing = ThingMaker.MakeThing(thingDef, null);
-                int num2 = Rand.Range(20, 40);
+                var num2 = Rand.Range(20, 40);
                 if (num2 > thing.def.stackLimit)
                 {
                     num2 = thing.def.stackLimit;
                 }
-                if ((float)num2 * thing.def.BaseMarketValue > num)
+                if (num2 * thing.def.BaseMarketValue > num)
                 {
                     num2 = Mathf.FloorToInt(num / thing.def.BaseMarketValue);
                 }
@@ -66,7 +74,7 @@ namespace CaveBiome
                 }
                 thing.stackCount = num2;
                 list.Add(thing);
-                num -= (float)num2 * thingDef.BaseMarketValue;
+                num -= num2 * thingDef.BaseMarketValue;
             }
             while (list.Count < MaxStacks && num > thingDef.BaseMarketValue);
             TryFindDropPodSpot(map, out IntVec3 intVec);

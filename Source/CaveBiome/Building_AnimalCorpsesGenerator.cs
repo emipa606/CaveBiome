@@ -22,8 +22,8 @@ namespace CaveBiome
 
         public void GenerateAnimalCorpses()
         {
-            int animalCorpsesNumber = Rand.Range(3, 7);
-            for (int corpseIndex = 0; corpseIndex < animalCorpsesNumber; corpseIndex++)
+            var animalCorpsesNumber = Rand.Range(3, 7);
+            for (var corpseIndex = 0; corpseIndex < animalCorpsesNumber; corpseIndex++)
             {
                 bool validator(IntVec3 cell)
                 {
@@ -42,11 +42,11 @@ namespace CaveBiome
                 }
 
                 IntVec3 spawnCell = IntVec3.Invalid;
-                bool spawnCellIsFound = CellFinder.TryFindRandomCellNear(Position, Map, 5, validator, out spawnCell);
+                var spawnCellIsFound = CellFinder.TryFindRandomCellNear(Position, Map, 5, validator, out spawnCell);
                 if (spawnCellIsFound)
                 {
                     PawnKindDef animalKindDef;
-                    float animalKindSelector = Rand.Value;
+                    var animalKindSelector = Rand.Value;
                     if (animalKindSelector < 0.33f)
                     {
                         animalKindDef = PawnKindDef.Named("Muffalo");

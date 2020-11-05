@@ -19,9 +19,9 @@ namespace CaveBiome
 		{
 			get
 			{
-				float x2 = (float)Find.TickManager.TicksGame / 3600000f;
-				float timePassedFactor = Mathf.Clamp(GenMath.LerpDouble(0f, 1.2f, 1f, 0.1f, x2), 0.1f, 1f);
-				return IncidentWorker_ShipChunkDropInCave.CountChance.RandomElementByWeight(delegate(Pair<int, float> x)
+				var x2 = Find.TickManager.TicksGame / 3600000f;
+				var timePassedFactor = Mathf.Clamp(GenMath.LerpDouble(0f, 1.2f, 1f, 0.1f, x2), 0.1f, 1f);
+				return CountChance.RandomElementByWeight(delegate(Pair<int, float> x)
 				{
 					if (x.First == 1)
 					{
@@ -34,19 +34,19 @@ namespace CaveBiome
 
 		protected override bool TryExecuteWorker(IncidentParms parms)
         {
-            Map map = (Map)parms.target;
+            var map = (Map)parms.target;
             if (map.Biome != Util_CaveBiome.CaveBiomeDef)
             {
-                return base.TryExecute(parms);
+                return TryExecute(parms);
             }
 
             TryFindShipChunkDropSpot(map, out IntVec3 firstChunkPosition);
             if (firstChunkPosition.IsValid)
             {
                 // Spawn ship chunks.
-                int partsCount = RandomCountToDrop;
+                var partsCount = RandomCountToDrop;
                 GenSpawn.Spawn(ThingDefOf.ShipChunk, firstChunkPosition, map);
-                for (int shipShunkIndex = 0; shipShunkIndex < partsCount - 1; shipShunkIndex++)
+                for (var shipShunkIndex = 0; shipShunkIndex < partsCount - 1; shipShunkIndex++)
                 {
                     TryFindShipChunkDropSpotNear(map, firstChunkPosition, out IntVec3 nexChunkPosition);
                     if (nexChunkPosition.IsValid)
@@ -103,7 +103,7 @@ namespace CaveBiome
                 return false;
             }
             List<Thing> thingList = position.GetThingList(map);
-            for (int thingIndex = 0; thingIndex < thingList.Count; thingIndex++)
+            for (var thingIndex = 0; thingIndex < thingList.Count; thingIndex++)
             {
                 Thing thing = thingList[thingIndex];
                 if ((thing.def.category != ThingCategory.Plant)

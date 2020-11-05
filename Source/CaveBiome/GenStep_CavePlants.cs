@@ -22,8 +22,8 @@ namespace CaveBiome
             
             // Enabled it to avoid error while checking new plant can be spawned nearby in same room.
             map.regionAndRoomUpdater.Enabled = true;
-            List<ThingDef_ClusterPlant> wildCavePlants = new List<ThingDef_ClusterPlant>();
-            Dictionary<ThingDef_ClusterPlant, float> wildCavePlantsWeighted = new Dictionary<ThingDef_ClusterPlant, float>();
+            var wildCavePlants = new List<ThingDef_ClusterPlant>();
+            var wildCavePlantsWeighted = new Dictionary<ThingDef_ClusterPlant, float>();
             foreach (ThingDef def in map.Biome.AllWildPlants)
             {
                 if (def is ThingDef_ClusterPlant cavePlantDef)
@@ -33,15 +33,15 @@ namespace CaveBiome
                 }
             }
 
-            int spawnTriesNumber = 10000;
-            int totalSuccessfulSpawns = 0;
-            int failedSpawns = 0;
-            int totalFailedSpawns = 0;
-            for (int tryIndex = 0; tryIndex < spawnTriesNumber; tryIndex++)
+            var spawnTriesNumber = 10000;
+            var totalSuccessfulSpawns = 0;
+            var failedSpawns = 0;
+            var totalFailedSpawns = 0;
+            for (var tryIndex = 0; tryIndex < spawnTriesNumber; tryIndex++)
             {
                 ThingDef_ClusterPlant cavePlantDef = wildCavePlants.RandomElementByWeight((ThingDef_ClusterPlant def) => wildCavePlantsWeighted[def]);
 
-                int newDesiredClusterSize = cavePlantDef.clusterSizeRange.RandomInRange;
+                var newDesiredClusterSize = cavePlantDef.clusterSizeRange.RandomInRange;
                 IntVec3 spawnCell = IntVec3.Invalid;
                 GenClusterPlantReproduction.TryGetRandomClusterSpawnCell(cavePlantDef, newDesiredClusterSize, false, map, out spawnCell); // Ignore temperature condition.
                 if (spawnCell.IsValid)
@@ -51,7 +51,7 @@ namespace CaveBiome
                     ClusterPlant newPlant = Cluster.SpawnNewClusterAt(map, spawnCell, cavePlantDef, newDesiredClusterSize);
                     newPlant.Growth = Rand.Range(ClusterPlant.minGrowthToReproduce, plantMaxGrowth);
 
-                    bool clusterIsMature = (Rand.Value < 0.7f);
+                    var clusterIsMature = Rand.Value < 0.7f;
                     GrowCluster(newPlant, clusterIsMature);
                 }
                 else
@@ -76,13 +76,13 @@ namespace CaveBiome
             }
             else
             {
-                seedPlantsNumber = (int)((float)cluster.desiredSize * Rand.Range(0.25f, 0.75f));
+                seedPlantsNumber = (int)(cluster.desiredSize * Rand.Range(0.25f, 0.75f));
             }
             if (seedPlantsNumber == 0)
             {
                 return;
             }
-            for (int seedPlantIndex = 0; seedPlantIndex < seedPlantsNumber; seedPlantIndex++)
+            for (var seedPlantIndex = 0; seedPlantIndex < seedPlantsNumber; seedPlantIndex++)
             {
                 ClusterPlant seedPlant = GenClusterPlantReproduction.TryGrowCluster(cluster, false); // Ignore temperature condition.
                 if (seedPlant != null)

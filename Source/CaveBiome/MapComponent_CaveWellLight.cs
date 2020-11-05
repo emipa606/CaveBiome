@@ -23,7 +23,7 @@ namespace CaveBiome
         public const int lightCheckPeriodInTicks = GenTicks.TicksPerRealSecond;
         public int nextLightCheckTick = 1;
 
-		public int gamehourDebugMessage = 0;
+        public int gamehourDebugMessage = 0;
 
         public const float brightnessCaveWellMin = 0f;
         public const float brightnessCaveWellMax = 1f;
@@ -31,26 +31,26 @@ namespace CaveBiome
         public static bool plantsMessageHasBeenSent = false;
         public static bool growingMessageHasBeenSent = false;
 
-		public static float glowRadiusCaveWellDay = 10f;
-		public static float glowRadiusCaveWellNight = 0f;
+        public static float glowRadiusCaveWellDay = 10f;
+        public static float glowRadiusCaveWellNight = 0f;
 
         public const float lightRadiusCaveWellMin = 0f;
         public const float lightRadiusCaveWellMax = 10f;
 
         public static ColorInt baseGlowColor = new ColorInt(370, 370, 370);
-		public static ColorInt currentGlowColor = new ColorInt(0, 0, 0);
+        public static ColorInt currentGlowColor = new ColorInt(0, 0, 0);
 
         public MapComponent_CaveWellLight(Map map) : base(map)
-		{
-			InstantiateGlow();
+        {
+            InstantiateGlow();
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
 
-            Scribe_Values.Look<bool>(ref MapComponent_CaveWellLight.plantsMessageHasBeenSent, "plantsMessageHasBeenSent");
-            Scribe_Values.Look<bool>(ref MapComponent_CaveWellLight.growingMessageHasBeenSent, "growingMessageHasBeenSent");
+            Scribe_Values.Look<bool>(ref plantsMessageHasBeenSent, "plantsMessageHasBeenSent");
+            Scribe_Values.Look<bool>(ref growingMessageHasBeenSent, "growingMessageHasBeenSent");
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
                 MapComponentTick();
@@ -58,16 +58,16 @@ namespace CaveBiome
         }
 
         public override void MapComponentTick()
-        {   
+        {
             if (map.Biome != Util_CaveBiome.CaveBiomeDef)
             {
                 return;
             }
-            
+
             if (Find.TickManager.TicksGame >= nextLightCheckTick)
             {
                 nextLightCheckTick = Find.TickManager.TicksGame + lightCheckPeriodInTicks;
-                float gamehour = GenDate.HoursPerDay * GenDate.DayPercent(Find.TickManager.TicksAbs, Find.WorldGrid.LongLatOf(map.Tile).x); // TODO: could refine to accommodate axial tilt, such that high latitudes will have "midnight sun" growing areas... nifty.
+                var gamehour = GenDate.HoursPerDay * GenDate.DayPercent(Find.TickManager.TicksAbs, Find.WorldGrid.LongLatOf(map.Tile).x); // TODO: could refine to accommodate axial tilt, such that high latitudes will have "midnight sun" growing areas... nifty.
                 float caveWellBrightness;
                 if (map.gameConditionManager.ConditionIsActive(GameConditionDefOf.Eclipse))
                 {
@@ -82,7 +82,7 @@ namespace CaveBiome
                     }
                     else if (gamehour < sunriseEndHour)
                     {
-                        float sunriseProgress = Math.Max(0f, gamehour - sunriseBeginHour) / (sunriseEndHour - sunriseBeginHour);
+                        var sunriseProgress = Math.Max(0f, gamehour - sunriseBeginHour) / (sunriseEndHour - sunriseBeginHour);
                         caveWellBrightness = sunriseProgress * brightnessCaveWellMax;
                     }
                     else if (gamehour < sunsetBeginHour)
@@ -91,8 +91,8 @@ namespace CaveBiome
                     }
                     else if (gamehour < sunsetEndHour)
                     {
-				        float sunsetProgress = Math.Max(0f, gamehour - sunsetBeginHour) / (sunsetEndHour-sunsetBeginHour);
-                        caveWellBrightness = 1 - sunsetProgress * brightnessCaveWellMax;
+                        var sunsetProgress = Math.Max(0f, gamehour - sunsetBeginHour) / (sunsetEndHour - sunsetBeginHour);
+                        caveWellBrightness = 1 - (sunsetProgress * brightnessCaveWellMax);
                     }
                     else
                     {
@@ -101,37 +101,32 @@ namespace CaveBiome
                 }
 
                 currentGlowColor.r = (int)(caveWellBrightness * caveWellBrightness * baseGlowColor.r);
-				currentGlowColor.g = (int)(caveWellBrightness * caveWellBrightness * baseGlowColor.g);
-				currentGlowColor.b = (int)(caveWellBrightness * caveWellBrightness * baseGlowColor.b);
-				
-				List<Thing> caveWellsList = map.listerThings.ThingsOfDef(Util_CaveBiome.CaveWellDef);
+                currentGlowColor.g = (int)(caveWellBrightness * caveWellBrightness * baseGlowColor.g);
+                currentGlowColor.b = (int)(caveWellBrightness * caveWellBrightness * baseGlowColor.b);
+
+                List<Thing> caveWellsList = map.listerThings.ThingsOfDef(Util_CaveBiome.CaveWellDef);
                 foreach (Thing caveWell in caveWellsList)
                 {
                     SetCaveWellBrightness(caveWell, caveWellBrightness);
                 }
-				
-                if ((MapComponent_CaveWellLight.plantsMessageHasBeenSent == false)
-                    && (gamehour >= sunriseBeginHour + 1))
+
+                if ((plantsMessageHasBeenSent == false) && (gamehour >= sunriseBeginHour + 1))
                 {
                     Find.LetterStack.ReceiveLetter("CaveBiome.LetterLabelCavePlants".Translate(), "CaveBiome.CavePlants".Translate(),
                         LetterDefOf.PositiveEvent);
-                    MapComponent_CaveWellLight.plantsMessageHasBeenSent = true;
+                    plantsMessageHasBeenSent = true;
                 }
-                if ((MapComponent_CaveWellLight.growingMessageHasBeenSent == false)
-                    && (gamehour >= sunriseBeginHour + 2))
+                if ((growingMessageHasBeenSent == false) && (gamehour >= sunriseBeginHour + 2))
                 {
-                    if (MapGenerator.PlayerStartSpot.IsValid
-                        && (MapGenerator.PlayerStartSpot != IntVec3.Zero)) // Checking PlayerStartSpot validity will still raise an error message if it is invalid.
+                    if (MapGenerator.PlayerStartSpot.IsValid && (MapGenerator.PlayerStartSpot != IntVec3.Zero)) // Checking PlayerStartSpot validity will still raise an error message if it is invalid.
                     {
-                        Find.LetterStack.ReceiveLetter("CaveBiome.LetterLabelGrowingInCave".Translate(), "CaveBiome.GrowingInCave".Translate(),
-                            LetterDefOf.PositiveEvent, new RimWorld.Planet.GlobalTargetInfo(MapGenerator.PlayerStartSpot, map));
+                        Find.LetterStack.ReceiveLetter("CaveBiome.LetterLabelGrowingInCave".Translate(), "CaveBiome.GrowingInCave".Translate(), LetterDefOf.PositiveEvent, new RimWorld.Planet.GlobalTargetInfo(MapGenerator.PlayerStartSpot, map));
                     }
                     else
                     {
-                        Find.LetterStack.ReceiveLetter("CaveBiome.LetterLabelGrowingInCave".Translate(), "CaveBiome.GrowingInCave".Translate(),
-                            LetterDefOf.PositiveEvent);
+                        Find.LetterStack.ReceiveLetter("CaveBiome.LetterLabelGrowingInCave".Translate(), "CaveBiome.GrowingInCave".Translate(), LetterDefOf.PositiveEvent);
                     }
-                    MapComponent_CaveWellLight.growingMessageHasBeenSent = true;
+                    growingMessageHasBeenSent = true;
                 }
             }
         }
@@ -148,10 +143,10 @@ namespace CaveBiome
                 glowRadiusCaveWellDay = glowerCompProps.glowRadius;
             }
         }
-        
+
         public void SetCaveWellBrightness(Thing caveWell, float intensity)
         {
-			CompGlower glowerComp = caveWell.TryGetComp<CompGlower>();
+            CompGlower glowerComp = caveWell.TryGetComp<CompGlower>();
             if (glowerComp is CompGlower)
             {
                 glowerComp.Props.glowRadius = intensity * lightRadiusCaveWellMax;

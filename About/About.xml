@@ -19,18 +19,23 @@
   <loadAfter>
     <li>Mlie.CaveworldFlora</li>
   </loadAfter>
-  <description>Update of Rikikis mod
+  <description>[img]https://i.imgur.com/WAEzk68.png[/img]
+Update of Rikikis mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=837412700
 
-[img]https://i.imgur.com/wtwHAQu.png[/img]
+- Added the map-gens to DeepRim and Z-Levels so some of the features should be visible there.
 
-Support-chat:
-https://invite.gg/mlie
+[img]https://i.imgur.com/7Gzt3Rg.png[/img]
 
-Non-steam version:
-https://github.com/emipa606/CaveBiome
+[table]
+	[tr]
+		[td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
+		[td][url=https://github.com/emipa606/CaveBiome][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+	[/tr]
+[/table]
 	
---- Original Description ---
+[img]https://i.imgur.com/NOW7jU1.png[/img]
+
 This mod adds a new biome: cave. This will allow you to explore and settle into the deep tunnels of this Rimworld.
 WARNING! Caveworld Flora must be enabled BEFORE this mod!
 See the forum thread for content/changelog and related mods. https://ludeon.com/forums/index.php?topic=13172.msg133449#msg133449</description>

@@ -10,25 +10,19 @@ namespace CaveBiome
     {
         private const float ShipPointsFactor = 0.9f;
 
-        protected virtual int CountToSpawn
-        {
-            get
-            {
-                return 1;
-            }
-        }
+        protected virtual int CountToSpawn => 1;
         protected override bool CanFireNowSub(IncidentParms parms)
         {
-            Map map = (Map)parms.target;
+            var map = (Map)parms.target;
             return map.listerThings.ThingsOfDef(def.mechClusterBuilding).Count <= 0;
         }
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
-            Map map = (Map)parms.target;
-            int num = 0;
-            int countToSpawn = CountToSpawn;
+            var map = (Map)parms.target;
+            var num = 0;
+            var countToSpawn = CountToSpawn;
             IntVec3 vec = IntVec3.Invalid;
-            for (int i = 0; i < countToSpawn; i++)
+            for (var i = 0; i < countToSpawn; i++)
             {
                 IntVec3 spawnCell = IntVec3.Invalid;
                 if (map.Biome == Util_CaveBiome.CaveBiomeDef)
@@ -47,12 +41,12 @@ namespace CaveBiome
                         {
                             if (!current.Standable(map))
                             {
-                                bool result = false;
+                                var result = false;
                                 return result;
                             }
                             if (map.roofGrid.Roofed(current))
                             {
-                                bool result = false;
+                                var result = false;
                                 return result;
                             }
                         }
@@ -68,10 +62,10 @@ namespace CaveBiome
                     break;
                 }
                 GenExplosion.DoExplosion(spawnCell, map, 3f, DamageDefOf.Flame, null, -1, -1,  null, null, null, null, null, 0f, 1, false, null, 0f, 1);
-                Building building_CrashedShipPart = (Building)GenSpawn.Spawn(def.mechClusterBuilding, spawnCell, map);
+                var building_CrashedShipPart = (Building)GenSpawn.Spawn(def.mechClusterBuilding, spawnCell, map);
                 building_CrashedShipPart.SetFaction(Faction.OfMechanoids, null);
                 var points = parms.points * ShipPointsFactor;
-                List<Pawn> list2 = PawnGroupMakerUtility.GeneratePawns(new PawnGroupMakerParms
+                var list2 = PawnGroupMakerUtility.GeneratePawns(new PawnGroupMakerParms
                 {
                     groupKind = PawnGroupKindDefOf.Combat,
                     tile = map.Tile,

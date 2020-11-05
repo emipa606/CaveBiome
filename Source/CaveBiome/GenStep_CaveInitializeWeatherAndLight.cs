@@ -6,13 +6,7 @@ namespace CaveBiome
 {
     public class GenStep_CaveInitializeWeatherAndLight : GenStep
     {
-        public override int SeedPart
-        {
-            get
-            {
-                return 647313558;
-            }
-        }
+        public override int SeedPart => 647313558;
         public override void Generate(Map map, GenStepParams parms)
 		{
             if (map.Biome != Util_CaveBiome.CaveBiomeDef)

@@ -6,22 +6,36 @@ namespace CaveBiome
 {
     public class IncidentWorker_RaidEnemyCave : IncidentWorker_RaidEnemy
     {
-        protected override bool TryExecuteWorker(IncidentParms parms)
+        public override void ResolveRaidArriveMode(IncidentParms parms)
         {
-            Map map = (Map)parms.target;
-            if (map.Biome == Util_CaveBiome.CaveBiomeDef)
+            if (parms.faction.def.techLevel >= TechLevel.Industrial)
             {
-                parms.raidArrivalMode = PawnsArrivalModeDefOf.EdgeWalkIn;
-                if ((parms.raidStrategy != null)
-                    && (parms.raidStrategy.defName == "Siege"))
-                {
-                    parms.raidStrategy = RaidStrategyDefOf.ImmediateAttack;
-                }
-                return base.TryExecute(parms);
+                //Log.Message("CaveBiome: Will use cave-drop as strategy");
+                parms.raidArrivalMode = DefDatabase<PawnsArrivalModeDef>.GetNamedSilentFail("CaveDrop");
             }
             else
             {
-                return base.TryExecute(parms);
+                //Log.Message("CaveBiome: Will use edge walkin as strategy");
+                parms.raidArrivalMode = PawnsArrivalModeDefOf.EdgeWalkIn;
+            }
+        }
+
+        public override void ResolveRaidStrategy(IncidentParms parms, PawnGroupKindDef groupKind)
+        {
+            if (Rand.Bool)
+            {
+                if (Rand.Bool)
+                {
+                    parms.raidStrategy = RaidStrategyDefOf.ImmediateAttack;
+                }
+                else
+                {
+                    parms.raidStrategy = DefDatabase<RaidStrategyDef>.GetNamedSilentFail("ImmediateAttackSmart");
+                }
+            }
+            else
+            {
+                parms.raidStrategy = DefDatabase<RaidStrategyDef>.GetNamedSilentFail("StageThenAttack");
             }
         }
     }

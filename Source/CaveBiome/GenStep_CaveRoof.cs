@@ -11,13 +11,7 @@ namespace CaveBiome
         public static int caveWellsNumber = 0;
         public static List<IntVec3> caveWellsPosition = null;
 
-        public override int SeedPart
-        {
-            get
-            {
-                return 647812558;
-            }
-        }
+        public override int SeedPart => 647812558;
 
         public override void Generate(Map map, GenStepParams genStepParams)
 		{
@@ -27,7 +21,7 @@ namespace CaveBiome
                 return;
             }
             // Compute number of cave wells (5 for standard map 250x250, around 13 for bigest map 400x400).
-            caveWellsNumber = Mathf.CeilToInt((map.Size.x * map.Size.z) / 12500);
+            caveWellsNumber = Mathf.CeilToInt(map.Size.x * map.Size.z / 12500);
 			foreach (IntVec3 cell in map.AllCells)
 			{
 			    Thing thing = map.edificeGrid.InnerArray[map.cellIndices.CellToIndex(cell)];
@@ -52,7 +46,7 @@ namespace CaveBiome
             // Spawn cave wells.
             // First cave well is always dry (to avoid starting thing scattering errors).
             SpawnDryCaveWellWithAnimalCorpsesAt(map, caveWellsPosition[0]);
-            for (int caveWellIndex = 1; caveWellIndex < caveWellsNumber; caveWellIndex++)
+            for (var caveWellIndex = 1; caveWellIndex < caveWellsNumber; caveWellIndex++)
             {
                 if (Rand.Value < 0.5f)
                 {
@@ -80,17 +74,17 @@ namespace CaveBiome
         {
             const float DistanceBeetweenCaveWells = 40f;
 
-            List<IntVec3> positionsList = new List<IntVec3>
+            var positionsList = new List<IntVec3>
             {
                 // Reuse PlayerStartSpot defined in river generation.
                 MapGenerator.PlayerStartSpot
             };
-            for (int caveWellIndex = 1; caveWellIndex < caveWellsNumber; caveWellIndex++)
+            for (var caveWellIndex = 1; caveWellIndex < caveWellsNumber; caveWellIndex++)
             {
                 bool validator(IntVec3 cell)
                 {
                     // Check cave well is not too close from another one.
-                    for (int i = 0; i < positionsList.Count; i++)
+                    for (var i = 0; i < positionsList.Count; i++)
                     {
                         if (cell.InHorDistOf(positionsList[i], DistanceBeetweenCaveWells))
                         {
@@ -109,7 +103,7 @@ namespace CaveBiome
                 }
 
                 IntVec3 caveWellCell = IntVec3.Invalid;
-                bool caveWellCellIsFound = CellFinderLoose.TryFindRandomNotEdgeCellWith(20, validator, map, out caveWellCell);
+                var caveWellCellIsFound = CellFinderLoose.TryFindRandomNotEdgeCellWith(20, validator, map, out caveWellCell);
                 if (caveWellCellIsFound)
                 {
                     positionsList.Add(caveWellCell);
@@ -132,8 +126,8 @@ namespace CaveBiome
             SetCellsInRadiusTerrain(map, position, 8f, TerrainDefOf.WaterShallow);
 
             // Spawn small additional holes.
-            int smallHolesNumber = Rand.RangeInclusive(2, 5);
-            for (int holeIndex = 0; holeIndex < smallHolesNumber; holeIndex++)
+            var smallHolesNumber = Rand.RangeInclusive(2, 5);
+            for (var holeIndex = 0; holeIndex < smallHolesNumber; holeIndex++)
             {
                 IntVec3 smallHolePosition = position + (7f * Vector3Utility.HorizontalVectorFromAngle(Rand.Range(0, 360))).ToIntVec3();
                 SetCellsInRadiusNoRoofNoRock(map, smallHolePosition, 5f);
@@ -181,8 +175,8 @@ namespace CaveBiome
             SetCellsInRadiusTerrain(map, position, 8f, TerrainDefOf.Soil);
 
             // Spawn small additional holes.
-            int smallHolesNumber = Rand.RangeInclusive(2, 5);
-            for (int holeIndex = 0; holeIndex < smallHolesNumber; holeIndex++)
+            var smallHolesNumber = Rand.RangeInclusive(2, 5);
+            for (var holeIndex = 0; holeIndex < smallHolesNumber; holeIndex++)
             {
                 IntVec3 smallHolePosition = position + (7f * Vector3Utility.HorizontalVectorFromAngle(Rand.Range(0, 360))).ToIntVec3();
                 SetCellsInRadiusNoRoofNoRock(map, smallHolePosition, 5f);
@@ -207,7 +201,7 @@ namespace CaveBiome
             GenSpawn.Spawn(thing, position + new IntVec3(0, 0, -1), map);
             (thing as Building_Sarcophagus).GetStoreSettings().filter.SetDisallowAll();
             // Spawn offerings.
-            thing = ThingMaker.MakeThing(ThingDef.Named("MeleeWeapon_Shiv"), ThingDef.Named("Jade"));
+            thing = ThingMaker.MakeThing(ThingDef.Named("MeleeWeapon_Knife"), ThingDef.Named("Jade"));
             GenSpawn.Spawn(thing, position + new IntVec3(0, 0, -1), map);
             thing = ThingMaker.MakeThing(ThingDefOf.MedicineHerbal);
             thing.stackCount = Rand.Range(5, 12);
@@ -224,8 +218,8 @@ namespace CaveBiome
                 {
                     continue;
                 }
-                int bloodQuantity = Rand.Range(2, 5);
-                for (int bloodFilthIndex = 0; bloodFilthIndex < bloodQuantity; bloodFilthIndex++)
+                var bloodQuantity = Rand.Range(2, 5);
+                for (var bloodFilthIndex = 0; bloodFilthIndex < bloodQuantity; bloodFilthIndex++)
                 {
                     GenSpawn.Spawn(ThingDefOf.Filth_Blood, cell, map);
                 }
@@ -268,7 +262,7 @@ namespace CaveBiome
                 }
                 // Remove cave roof.
                 List<Thing> thingList = cell.GetThingList(map);
-                for (int thingIndex = 0; thingIndex < thingList.Count; thingIndex++)
+                for (var thingIndex = 0; thingIndex < thingList.Count; thingIndex++)
                 {
                     Thing thing = thingList[thingIndex];
                     if (thing.def == Util_CaveBiome.CaveRoofDef)

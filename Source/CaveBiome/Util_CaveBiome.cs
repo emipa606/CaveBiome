@@ -7,73 +7,24 @@ namespace CaveBiome
     public static class Util_CaveBiome
     {
         // Crystal lamp.
-        public static ThingDef CrystalLampDef
-        {
-            get
-            {
-                return ThingDef.Named("CrystalLamp");
-            }
-        }
-
+        public static ThingDef CrystalLampDef => ThingDef.Named("CrystalLamp");
 
         // Roof and cave well.
-        public static ThingDef CaveRoofDef
-        {
-            get
-            {
-                return ThingDef.Named("CaveRoof");
-            }
-        }
+        public static ThingDef CaveRoofDef => ThingDef.Named("CaveRoof");
 
-        public static ThingDef CaveWellDef
-        {
-            get
-            {
-                return ThingDef.Named("CaveWell");
-            }
-        }
-        
+        public static ThingDef CaveWellDef => ThingDef.Named("CaveWell");
+
         // Weather and light.
-        public static WeatherDef CaveCalmWeatherDef
-        {
-            get
-            {
-                return WeatherDef.Named("CaveCalm");
-            }
-        }
+        public static WeatherDef CaveCalmWeatherDef => WeatherDef.Named("CaveCalm");
 
-        public static GameConditionDef CaveEnvironmentGameConditionDef
-        {
-            get
-            {
-                return GameConditionDef.Named("CaveEnvironment");
-            }
-        }
+        public static GameConditionDef CaveEnvironmentGameConditionDef => GameConditionDef.Named("CaveEnvironment");
 
         // Biome.
-        public static BiomeDef CaveBiomeDef
-        {
-            get
-            {
-                return BiomeDef.Named("Cave");
-            }
-        }
+        public static BiomeDef CaveBiomeDef => BiomeDef.Named("Cave");
 
         // Corpses generators.
-        public static ThingDef AnimalCorpsesGeneratorDef
-        {
-            get
-            {
-                return ThingDef.Named("AnimalCorpsesGenerator");
-            }
-        }
+        public static ThingDef AnimalCorpsesGeneratorDef => ThingDef.Named("AnimalCorpsesGenerator");
 
-        public static ThingDef VillagerCorpsesGeneratorDef
-        {
-            get
-            {
-                return ThingDef.Named("VillagerCorpsesGenerator");
-            }
-        }
+        public static ThingDef VillagerCorpsesGeneratorDef => ThingDef.Named("VillagerCorpsesGenerator");
     }
 }

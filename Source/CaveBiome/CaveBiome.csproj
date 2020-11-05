@@ -40,6 +40,7 @@
     <Compile Include="IncidentWorker_MeteoriteImpactCave.cs" />
     <Compile Include="IncidentWorker_RaidEnemyCave.cs" />
     <Compile Include="IncidentWorker_FlashstormCave.cs" />
+    <Compile Include="PawnsArrivalModeWorker_CaveDrop.cs" />
     <Compile Include="PlaceWorker_OnlyInCave.cs" />
     <Compile Include="PlaceWorker_NotInCave.cs" />
     <Compile Include="Building_AnimalCorpsesGenerator.cs" />
