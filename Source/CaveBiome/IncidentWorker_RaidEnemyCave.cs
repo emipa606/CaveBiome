@@ -8,6 +8,12 @@ namespace CaveBiome
     {
         public override void ResolveRaidArriveMode(IncidentParms parms)
         {
+            var map = (Map)parms.target;
+            if (map.Biome != Util_CaveBiome.CaveBiomeDef)
+            {
+                base.ResolveRaidArriveMode(parms);
+                return;
+            }
             if (parms.faction.def.techLevel >= TechLevel.Industrial)
             {
                 //Log.Message("CaveBiome: Will use cave-drop as strategy");
@@ -22,6 +28,12 @@ namespace CaveBiome
 
         public override void ResolveRaidStrategy(IncidentParms parms, PawnGroupKindDef groupKind)
         {
+            var map = (Map)parms.target;
+            if (map.Biome != Util_CaveBiome.CaveBiomeDef)
+            {
+                base.ResolveRaidStrategy(parms, groupKind);
+                return;
+            }
             if (Rand.Bool)
             {
                 if (Rand.Bool)
