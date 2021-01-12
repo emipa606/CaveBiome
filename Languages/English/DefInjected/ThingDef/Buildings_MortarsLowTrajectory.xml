@@ -1,13 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
   <!-- Mortar bomb turret -->
-
   <Turret_MortarCave.label>mortar (low trajectory)</Turret_MortarCave.label>
   <Turret_MortarCave.description>A mortar that launches explosive shells. Must be manned. Explodes when damaged. Uses direct low trajectory: requires a direct line of sight and reduces range but increases accuracy.</Turret_MortarCave.description>
-
   <Artillery_MortarCave.label>mortar</Artillery_MortarCave.label>
   <Artillery_MortarCave.description>Mortar launcher. Lobs bombs over walls. Very inaccurate but long-ranged.</Artillery_MortarCave.description>
-
-
 </LanguageData>

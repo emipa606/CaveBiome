@@ -1,11 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
   <CrystalLamp.label>crystal lamp</CrystalLamp.label>
   <CrystalLamp.description>A cold crystal installed on a wooden post. Lights an area but the crystal seems to absorb the surrounding heat.</CrystalLamp.description>
   <CrystalLamp_Blueprint.label>crystal lamp (blueprint)</CrystalLamp_Blueprint.label>
   <CrystalLamp_Frame.label>crystal lamp (building)</CrystalLamp_Frame.label>
   <CrystalLamp_Frame.description>A cold crystal installed on a wooden post. Lights an area but the crystal seems to absorb the surrounding heat.</CrystalLamp_Frame.description>
-
-
 </LanguageData>

@@ -74,10 +74,10 @@
     </researchPrerequisites>
     <uiIconScale>1.1</uiIconScale>
   </ThingDef>
-  <ThingDef Name="BaseArtilleryWeapon" Abstract="True">
+  <ThingDef Name="BaseArtilleryWeaponCave" Abstract="True">
     <category>Item</category>
     <thingClass>ThingWithComps</thingClass>
-    <label>artillery error</label>
+    <label>cave artillery</label>
     <equipmentType>Primary</equipmentType>
     <tickerType>Never</tickerType>
     <techLevel>Industrial</techLevel>
@@ -97,8 +97,8 @@
   <!--=============== Mortar bomb turret ===============-->
   <ThingDef ParentName="BaseArtilleryBuildingCave">
     <defName>Turret_MortarCave</defName>
-    <label>mortar (low trajectory)</label>
-    <description>A mortar that launches explosive shells. Must be manned. Explodes when damaged. Uses direct low trajectory: requires a direct line of sight and reduces range but increases accuracy.</description>
+    <label>cave mortar (low trajectory)</label>
+    <description>A mortar that launches explosive shells. Must be manned. Explodes when damaged. Uses direct low trajectory: requires a direct line of sight and reduces range but increases accuracy. Can be used in a cave</description>
     <comps>
       <li Class="CompProperties_Explosive">
         <wickTicks>240</wickTicks>
@@ -118,14 +118,14 @@
     <uiIconPath>Things/Building/Security/TurretMortar_MenuIcon</uiIconPath>
     <uiIconScale>0.9</uiIconScale>
   </ThingDef>
-  <ThingDef ParentName="BaseArtilleryWeapon">
+  <ThingDef ParentName="BaseArtilleryWeaponCave">
     <defName>Artillery_MortarCave</defName>
-    <label>mortar</label>
+    <label>cave mortar</label>
     <graphicData>
       <texPath>Things/Building/Security/TurretMortar_Top</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <description>Mortar launcher. Lobs bombs over walls. Very inaccurate but long-ranged.</description>
+    <description>Mortar launcher for caves. Lobs bombs over walls. Very inaccurate but long-ranged.</description>
     <weaponTags>
       <li>Artillery_BaseDestroyer</li>
     </weaponTags>
