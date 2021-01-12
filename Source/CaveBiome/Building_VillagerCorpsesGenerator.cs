@@ -23,11 +23,11 @@ namespace CaveBiome
         public void GenerateVillagerCorpses()
         {
             Faction faction = Find.FactionManager.FirstFactionOfDef(FactionDef.Named("TribeCivil"));
-            SpawnPawnCorpse(Map, Position, PawnKindDef.Named("TribalChief"), faction, GenDate.TicksPerDay, true);
-            SpawnPawnCorpse(Map, Position + new IntVec3(2, 0, 2), PawnKindDef.Named("TribalWarrior"), faction, GenDate.TicksPerDay, true);
-            SpawnPawnCorpse(Map, Position + new IntVec3(2, 0, -2), PawnKindDef.Named("TribalWarrior"), faction, GenDate.TicksPerDay, true);
-            SpawnPawnCorpse(Map, Position + new IntVec3(-2, 0, -2), PawnKindDef.Named("TribalWarrior"), faction, GenDate.TicksPerDay, true);
-            SpawnPawnCorpse(Map, Position + new IntVec3(-2, 0, 2), PawnKindDef.Named("TribalWarrior"), faction, GenDate.TicksPerDay, true);
+            SpawnPawnCorpse(Map, Position, PawnKindDef.Named("Tribal_ChiefMelee"), faction, GenDate.TicksPerDay, true);
+            SpawnPawnCorpse(Map, Position + new IntVec3(2, 0, 2), PawnKindDef.Named("Tribal_Warrior"), faction, GenDate.TicksPerDay, true);
+            SpawnPawnCorpse(Map, Position + new IntVec3(2, 0, -2), PawnKindDef.Named("Tribal_Warrior"), faction, GenDate.TicksPerDay, true);
+            SpawnPawnCorpse(Map, Position + new IntVec3(-2, 0, -2), PawnKindDef.Named("Tribal_Warrior"), faction, GenDate.TicksPerDay, true);
+            SpawnPawnCorpse(Map, Position + new IntVec3(-2, 0, 2), PawnKindDef.Named("Tribal_Warrior"), faction, GenDate.TicksPerDay, true);
         }
 
         public static void SpawnPawnCorpse(Map map, IntVec3 spawnCell, PawnKindDef pawnKindDef, Faction faction, float rotProgressInTicks, bool removeEquipment = false)
