@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Mortar bomb turret -->
+  <Turret_MortarCave.label>mortier (trajectoire basse)</Turret_MortarCave.label>
+  <Turret_MortarCave.description>Un mortier qui lance des obus explosifs. Doit être habité. Explose lorsqu'il est endommagé. Utilise une trajectoire basse directe: nécessite une ligne de visée directe et réduit la portée mais augmente la précision.</Turret_MortarCave.description>
+  <Artillery_MortarCave.label>mortier</Artillery_MortarCave.label>
+  <Artillery_MortarCave.description>Lanceur de mortier. Lance des bombes sur les murs. Très imprécis mais de longue durée.</Artillery_MortarCave.description>
+</LanguageData>

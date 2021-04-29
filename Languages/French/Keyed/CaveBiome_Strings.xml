@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Place Worker -->
+  <CaveBiome.CanOnlyBuildInCave>Ce bâtiment ne peut être construit que dans une grotte.</CaveBiome.CanOnlyBuildInCave>
+  <CaveBiome.CanNotBuildInCave>Ce bâtiment ne peut pas être construit dans une grotte.</CaveBiome.CanNotBuildInCave>
+  <!-- Letters -->
+  <CaveBiome.LetterLabelCavePlants>Plantes des cavernes</CaveBiome.LetterLabelCavePlants>
+  <CaveBiome.CavePlants>Dans les grottes, la plupart des plantes des cavernes peuvent être utiles, alors regardez autour de vous! \n certaines plantes comme les feuilles géantes peuvent être cuites, \n d'autres comme la vigne des cavernes sont assez durs pour être utilisées comme le bois, \n et certaines comme la langue du diable fournissent matériau fibreux utile. \n \n Méfiez-vous cependant! Les grottes sont un endroit difficile à vivre et certaines plantes peuvent être dangereuses.</CaveBiome.CavePlants>
+  <CaveBiome.LetterLabelGrowingInCave>Grandir dans la grotte</CaveBiome.LetterLabelGrowingInCave>
+  <CaveBiome.GrowingInCave>Le soleil ne peut pas éclairer directement les tunnels de la grotte. Vous pouvez cependant faire pousser des plantes dans des puits de caverne. Les puits souterrains sont des ouvertures naturelles à la surface.</CaveBiome.GrowingInCave>
+</LanguageData>

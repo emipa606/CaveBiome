@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <CrystalLamp.label>lampe cristal</CrystalLamp.label>
+  <CrystalLamp.description>Un cristal froid installé sur un poteau en bois. Éclaire une zone mais le cristal semble absorber la chaleur environnante.</CrystalLamp.description>
+  <CrystalLamp_Blueprint.label>lampe cristal (plan)</CrystalLamp_Blueprint.label>
+  <CrystalLamp_Frame.label>lampe cristal (construction)</CrystalLamp_Frame.label>
+  <CrystalLamp_Frame.description>Un cristal froid installé sur un poteau en bois. Éclaire une zone mais le cristal semble absorber la chaleur environnante.</CrystalLamp_Frame.description>
+</LanguageData>

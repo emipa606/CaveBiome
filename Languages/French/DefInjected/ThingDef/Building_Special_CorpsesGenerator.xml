@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <AnimalCorpsesGenerator.label>générateur de cadavres d'animaux</AnimalCorpsesGenerator.label>
+  <AnimalCorpsesGenerator.description>Ce bâtiment n'est utilisé que pour générer des cadavres d'animaux morts qui tombent dans un puits de caverne. Il se supprimera une fois que cela sera effectué.
+C'est une astuce nécessaire car fogGrid et homeArea empêchent d'endommager les pions et interdisent leur corps pendant la génération de la carte.</AnimalCorpsesGenerator.description>
+  <VillagerCorpsesGenerator.label>générateur de cadavres de villageois</VillagerCorpsesGenerator.label>
+  <VillagerCorpsesGenerator.description>Ce bâtiment n'est utilisé que pour générer des cadavres de villageois sacrifiés. Il se supprimera une fois que cela sera effectué.
+C'est une astuce nécessaire car le fogGrid et homeArea empêchent d'endommager les pions et interdisent leur corps pendant la génération de la carte.</VillagerCorpsesGenerator.description>
+</LanguageData>

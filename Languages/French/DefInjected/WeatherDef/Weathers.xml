@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <CaveCalm.label>calme</CaveCalm.label>
+  <CaveCalm.description>Un moment calme. Pas de pénalités ni de modificateurs.</CaveCalm.description>
+  <CaveFog.label>brouillard</CaveFog.label>
+  <CaveFog.description>Le brouillard réduit la précision des armes à distance comme si l'obscurité ne suffisait pas ... Le taux d'humidité global est étonnamment élevé dans les grottes.</CaveFog.description>
+  <CaveStorm.label>tempête de caverne</CaveStorm.label>
+  <CaveStorm.description>La tempête de caverne se produit quand une grande tempête de surface se produit. Les vents puissants ralentiront beaucoup les gens.</CaveStorm.description>
+  <CaveHardSnow.label>neige</CaveHardSnow.label>
+  <CaveHardSnow.description>La neige réduit la précision des armes à distance, éteint le feu et ralentit les gens.</CaveHardSnow.description>
+</LanguageData>
