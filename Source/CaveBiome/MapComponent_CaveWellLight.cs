@@ -21,27 +21,31 @@ namespace CaveBiome
         public const int sunsetBeginHour = 16;
         public const int sunsetEndHour = 20;
         public const int lightCheckPeriodInTicks = GenTicks.TicksPerRealSecond;
-        public int nextLightCheckTick = 1;
+        public int nextLightCheckTick;
 
-        public int gamehourDebugMessage = 0;
+        public int gamehourDebugMessage;
 
         public const float brightnessCaveWellMin = 0f;
         public const float brightnessCaveWellMax = 1f;
 
-        public static bool plantsMessageHasBeenSent = false;
-        public static bool growingMessageHasBeenSent = false;
+        public static bool plantsMessageHasBeenSent;
+        public static bool growingMessageHasBeenSent;
 
-        public static float glowRadiusCaveWellDay = 10f;
-        public static float glowRadiusCaveWellNight = 0f;
+        public static float glowRadiusCaveWellDay;
 
-        public const float lightRadiusCaveWellMin = 0f;
         public const float lightRadiusCaveWellMax = 10f;
 
-        public static ColorInt baseGlowColor = new ColorInt(370, 370, 370);
-        public static ColorInt currentGlowColor = new ColorInt(0, 0, 0);
+        public static ColorInt baseGlowColor;
+        public static ColorInt currentGlowColor;
 
         public MapComponent_CaveWellLight(Map map) : base(map)
         {
+            nextLightCheckTick = 1;
+            gamehourDebugMessage = 0;
+            glowRadiusCaveWellDay = 10f;
+            baseGlowColor = new ColorInt(370, 370, 370);
+            currentGlowColor = new ColorInt(0, 0, 0);
+
             InstantiateGlow();
         }
 

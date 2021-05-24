@@ -69,8 +69,19 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Assembly-CSharp, Version=1.2.7810.35712, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="CaveworldFlora">
       <HintPath>..\..\..\..\..\..\workshop\content\294100\2259058735\Assemblies\CaveworldFlora.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

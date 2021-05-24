@@ -6,6 +6,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.idea
 
 # Build results
 [Dd]ebug/
@@ -19,6 +20,8 @@ bld/
 [Bb]in/
 [Oo]bj/
 .vs/
+Assemblies/
+
 
 # Roslyn cache directories
 *.ide/
