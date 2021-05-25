@@ -46,7 +46,7 @@ namespace CaveBiome
             baseGlowColor = new ColorInt(370, 370, 370);
             currentGlowColor = new ColorInt(0, 0, 0);
 
-            InstantiateGlow();
+            //InstantiateGlow();
         }
 
         public override void ExposeData()
