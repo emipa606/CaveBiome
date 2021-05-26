@@ -1,26 +1,27 @@
-﻿using RimWorld;      // RimWorld specific functions are found here
-using Verse;         // RimWorld universal objects are here
-//using Verse.Sound; // Needed when you do something with the Sound
+﻿using RimWorld;
+using Verse;
 
 namespace CaveBiome
 {
     /// <summary>
-    /// Building_AnimalCorpsesGenerator class.
+    ///     Building_AnimalCorpsesGenerator class.
     /// </summary>
     /// <author>Rikiki</author>
-    /// <permission>Use this code as you want, just remember to add a link to the corresponding Ludeon forum mod release thread.
-    /// Remember learning is always better than just copy/paste...</permission>
+    /// <permission>
+    ///     Use this code as you want, just remember to add a link to the corresponding Ludeon forum mod release thread.
+    ///     Remember learning is always better than just copy/paste...
+    /// </permission>
     public class Building_AnimalCorpsesGenerator : Building
     {
         public override void Tick()
         {
             base.Tick();
-            
+
             GenerateAnimalCorpses();
             Destroy();
         }
 
-        public void GenerateAnimalCorpses()
+        private void GenerateAnimalCorpses()
         {
             var animalCorpsesNumber = Rand.Range(3, 7);
             for (var corpseIndex = 0; corpseIndex < animalCorpsesNumber; corpseIndex++)
@@ -31,36 +32,41 @@ namespace CaveBiome
                     {
                         return false;
                     }
-                    foreach (Thing thing in Map.thingGrid.ThingsListAt(cell))
+
+                    foreach (var thing in Map.thingGrid.ThingsListAt(cell))
                     {
                         if (thing is Corpse)
                         {
                             return false;
                         }
                     }
+
                     return true;
                 }
 
-                IntVec3 spawnCell = IntVec3.Invalid;
-                var spawnCellIsFound = CellFinder.TryFindRandomCellNear(Position, Map, 5, validator, out spawnCell);
-                if (spawnCellIsFound)
+                var spawnCellIsFound = CellFinder.TryFindRandomCellNear(Position, Map, 5, validator, out var spawnCell);
+                if (!spawnCellIsFound)
                 {
-                    PawnKindDef animalKindDef;
-                    var animalKindSelector = Rand.Value;
-                    if (animalKindSelector < 0.33f)
-                    {
-                        animalKindDef = PawnKindDef.Named("Muffalo");
-                    }
-                    else if (animalKindSelector < 0.66f)
-                    {
-                        animalKindDef = PawnKindDef.Named("Caribou");
-                    }
-                    else
-                    {
-                        animalKindDef = PawnKindDef.Named("Deer");
-                    }
-                    Building_VillagerCorpsesGenerator.SpawnPawnCorpse(Map, spawnCell, animalKindDef, null, Rand.Range(5f, 20f) * GenDate.TicksPerDay);
+                    continue;
                 }
+
+                PawnKindDef animalKindDef;
+                var animalKindSelector = Rand.Value;
+                if (animalKindSelector < 0.33f)
+                {
+                    animalKindDef = PawnKindDef.Named("Muffalo");
+                }
+                else if (animalKindSelector < 0.66f)
+                {
+                    animalKindDef = PawnKindDef.Named("Caribou");
+                }
+                else
+                {
+                    animalKindDef = PawnKindDef.Named("Deer");
+                }
+
+                Building_VillagerCorpsesGenerator.SpawnPawnCorpse(Map, spawnCell, animalKindDef, null,
+                    Rand.Range(5f, 20f) * GenDate.TicksPerDay);
             }
         }
     }

@@ -1,59 +1,68 @@
-﻿using RimWorld;      // RimWorld specific functions are found here
-using Verse;         // RimWorld universal objects are here
-//using Verse.Sound; // Needed when you do something with the Sound
+﻿using RimWorld;
+using Verse;
 
 namespace CaveBiome
 {
     /// <summary>
-    /// Building_VillagerCorpsesGenerator class.
+    ///     Building_VillagerCorpsesGenerator class.
     /// </summary>
     /// <author>Rikiki</author>
-    /// <permission>Use this code as you want, just remember to add a link to the corresponding Ludeon forum mod release thread.
-    /// Remember learning is always better than just copy/paste...</permission>
+    /// <permission>
+    ///     Use this code as you want, just remember to add a link to the corresponding Ludeon forum mod release thread.
+    ///     Remember learning is always better than just copy/paste...
+    /// </permission>
     public class Building_VillagerCorpsesGenerator : Building
     {
         public override void Tick()
         {
             base.Tick();
-            
+
             GenerateVillagerCorpses();
             Destroy();
         }
 
-        public void GenerateVillagerCorpses()
+        private void GenerateVillagerCorpses()
         {
-            Faction faction = Find.FactionManager.FirstFactionOfDef(FactionDef.Named("TribeCivil"));
+            var faction = Find.FactionManager.FirstFactionOfDef(FactionDef.Named("TribeCivil"));
             SpawnPawnCorpse(Map, Position, PawnKindDef.Named("Tribal_ChiefMelee"), faction, GenDate.TicksPerDay, true);
-            SpawnPawnCorpse(Map, Position + new IntVec3(2, 0, 2), PawnKindDef.Named("Tribal_Warrior"), faction, GenDate.TicksPerDay, true);
-            SpawnPawnCorpse(Map, Position + new IntVec3(2, 0, -2), PawnKindDef.Named("Tribal_Warrior"), faction, GenDate.TicksPerDay, true);
-            SpawnPawnCorpse(Map, Position + new IntVec3(-2, 0, -2), PawnKindDef.Named("Tribal_Warrior"), faction, GenDate.TicksPerDay, true);
-            SpawnPawnCorpse(Map, Position + new IntVec3(-2, 0, 2), PawnKindDef.Named("Tribal_Warrior"), faction, GenDate.TicksPerDay, true);
+            SpawnPawnCorpse(Map, Position + new IntVec3(2, 0, 2), PawnKindDef.Named("Tribal_Warrior"), faction,
+                GenDate.TicksPerDay, true);
+            SpawnPawnCorpse(Map, Position + new IntVec3(2, 0, -2), PawnKindDef.Named("Tribal_Warrior"), faction,
+                GenDate.TicksPerDay, true);
+            SpawnPawnCorpse(Map, Position + new IntVec3(-2, 0, -2), PawnKindDef.Named("Tribal_Warrior"), faction,
+                GenDate.TicksPerDay, true);
+            SpawnPawnCorpse(Map, Position + new IntVec3(-2, 0, 2), PawnKindDef.Named("Tribal_Warrior"), faction,
+                GenDate.TicksPerDay, true);
         }
 
-        public static void SpawnPawnCorpse(Map map, IntVec3 spawnCell, PawnKindDef pawnKindDef, Faction faction, float rotProgressInTicks, bool removeEquipment = false)
+        public static void SpawnPawnCorpse(Map map, IntVec3 spawnCell, PawnKindDef pawnKindDef, Faction faction,
+            float rotProgressInTicks, bool removeEquipment = false)
         {
-            Pawn pawn = PawnGenerator.GeneratePawn(pawnKindDef, faction);
+            var pawn = PawnGenerator.GeneratePawn(pawnKindDef, faction);
             GenSpawn.Spawn(pawn, spawnCell, map);
             if (removeEquipment)
             {
                 pawn.equipment.DestroyAllEquipment();
                 pawn.inventory.DestroyAll();
             }
+
             KillAndRotPawn(pawn, rotProgressInTicks);
         }
 
-        public static void KillAndRotPawn(Pawn pawn, float rotProgressInTicks)
+        private static void KillAndRotPawn(Pawn pawn, float rotProgressInTicks)
         {
             HealthUtility.DamageUntilDead(pawn);
-            foreach (Thing thing in pawn.Position.GetThingList(pawn.MapHeld))
+            foreach (var thing in pawn.Position.GetThingList(pawn.MapHeld))
             {
-                if (thing.def.defName.Contains("Corpse"))
+                if (!thing.def.defName.Contains("Corpse"))
                 {
-                    CompRottable rotComp = thing.TryGetComp<CompRottable>();
-                    if (rotComp != null)
-                    {
-                        rotComp.RotProgress = rotProgressInTicks;
-                    }
+                    continue;
+                }
+
+                var rotComp = thing.TryGetComp<CompRottable>();
+                if (rotComp != null)
+                {
+                    rotComp.RotProgress = rotProgressInTicks;
                 }
             }
         }

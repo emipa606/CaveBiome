@@ -1,160 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3EB8FED6-314E-487B-AEF5-518D4370C4C7}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CaveBiome</RootNamespace>
-    <AssemblyName>CaveBiome</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>..\..\Assemblies\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>..\..\Assemblies</OutputPath>
+    <TargetFramework>net472</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <DebugType>None</DebugType>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Lib.Harmony.2.0.2\lib\net472\0Harmony.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="CaveworldFlora, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\CaveworldFlora\CaveworldFlora\CaveworldFlora\Assemblies\CaveworldFlora.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Krafs.Rimworld.Ref">
+      <Version>*</Version>
+      <ExcludeAssets>runtime</ExcludeAssets>
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Lib.Harmony">
+      <Version>*</Version>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="GenStep_CaveRiver.cs" />
-    <Compile Include="IncidentWorker_RaidEnemyCave.cs" />
-    <Compile Include="IncidentWorker_FlashstormCave.cs" />
-    <Compile Include="PlaceWorker_OnlyInCave.cs" />
-    <Compile Include="PlaceWorker_NotInCave.cs" />
-    <Compile Include="Building_AnimalCorpsesGenerator.cs" />
-    <Compile Include="Building_VillagerCorpsesGenerator.cs" />
-    <Compile Include="IncidentWorker_RefugeePodCrashInCave.cs" />
-    <Compile Include="IncidentWorker_ResourcePodCrashInCave.cs" />
-    <Compile Include="IncidentWorker_ShipChunkDropInCave.cs" />
-    <Compile Include="IncidentWorker_PoisonShipPartCrashInCave.cs" />
-    <Compile Include="IncidentWorker_PsychicEmanatorShipPartCrashInCave.cs" />
-    <Compile Include="IncidentWorker_ShipPartCrashInCave.cs" />
-    <Compile Include="MapComponent_CaveWellLight.cs" />
-    <Compile Include="Util_CaveBiome.cs" />
-    <Compile Include="BiomeWorker_Cave.cs" />
-    <Compile Include="GenStep_CavePlants.cs" />
-    <Compile Include="GameCondition_Cave.cs" />
-    <Compile Include="GenStep_CaveInitializeWeatherAndLight.cs" />
-    <Compile Include="GenStep_FindPlayerStartSpot.cs" />
-    <Compile Include="GenStep_CaveRoof.cs" />
-    <Compile Include="GenStep_CaveElevation.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="CaveBiome\About\About.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CaveBiome\About\Preview.png" />
-    <Content Include="CaveBiome\About\PublishedFileId.txt" />
-    <Content Include="CaveBiome\Defs\BiomeDefs\Biomes_Cave.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CaveBiome\Defs\MapConditionDefs\MapConditions_Cave.xml" />
-    <Content Include="CaveBiome\Defs\MapGeneration\MapGenerators.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CaveBiome\Defs\ThingDefs_Buildings\Buildings_Base.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CaveBiome\Defs\ThingDefs_Buildings\Buildings_CaveRoof.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CaveBiome\Defs\ThingDefs_Buildings\Buildings_CaveWell.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CaveBiome\Defs\ThingDefs_Buildings\Buildings_CrystalLamp.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CaveBiome\Defs\ThingDefs_Buildings\Buildings_UnderwaterPowerConduit.xml" />
-    <Content Include="CaveBiome\Defs\ThingDefs_Buildings\Buildings_MinableColdCrystal.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CaveBiome\Defs\ThingDefs_Buildings\Buildings_MortarsLowTrajectory.xml" />
-    <Content Include="CaveBiome\Defs\ThingDefs_Buildings\Building_Special_CorpsesGenerator.xml" />
-    <Content Include="CaveBiome\Defs\ThingDefs_Items\Items_Resource_ColdCrystal.xml" />
-    <Content Include="CaveBiome\Defs\WeatherDefs\Weathers.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CaveBiome\Languages\English\Keyed\CaveBiome_Strings.xml" />
-    <Content Include="CaveBiome\Patches\Incidents_Map_Special.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CaveBiome\Patches\Incidents_Map_Misc.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CaveBiome\Patches\Incidents_Map_Threats.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CaveBiome\Patches\Buildings_SolarGenerator.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CaveBiome\Patches\Buildings_Mortars.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CaveBiome\Patches\Terrain_Water.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CaveBiome\Textures\Things\Building\DummyTexture.png" />
-    <Content Include="CaveBiome\Textures\Things\Building\Misc\CrystalLamp.png" />
-    <Content Include="CaveBiome\Textures\Things\Item\Resource\ColdCrystal.png" />
-    <Content Include="CaveBiome\Textures\World\Biomes\Cave.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CaveBiome\Assemblies\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

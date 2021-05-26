@@ -1,5 +1,8 @@
 # Changelog for CaveBiome
 
+1.0.7.0 - Fixed some light-issues, thanks Mersid
+
+
 1.0.6.0 - French translation added, thanks qux!
 
 

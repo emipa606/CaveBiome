@@ -1,6 +1,5 @@
-﻿
+﻿using RimWorld;
 using Verse;
-using RimWorld;
 
 namespace CaveBiome
 {

@@ -1,6 +1,5 @@
-﻿
+﻿using RimWorld;
 using Verse;
-using RimWorld;
 
 namespace CaveBiome
 {
@@ -8,8 +7,9 @@ namespace CaveBiome
     {
         protected override bool CanFireNowSub(IncidentParms parms)
         {
-            var map = (Map)parms.target;
-            return !map.gameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicDrone) && base.CanFireNowSub(parms);
+            var map = (Map) parms.target;
+            return !map.gameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicDrone) &&
+                   base.CanFireNowSub(parms);
         }
     }
 }

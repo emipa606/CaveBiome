@@ -1,13 +1,13 @@
-﻿using HarmonyLib;
+﻿using System.Reflection;
+using DeepRim;
+using HarmonyLib;
 using RimWorld;
-using System.Reflection;
 using Verse;
 
 namespace DeepRimPatch
 {
-
     [StaticConstructorOnStartup]
-    static class DeepRimPatch
+    internal static class DeepRimPatch
     {
         static DeepRimPatch()
         {
@@ -17,13 +17,13 @@ namespace DeepRimPatch
 
         [HarmonyPatch(typeof(Map))]
         [HarmonyPatch("Biome")]
-        [HarmonyAfter(new string[] { "com.deeprim.rimworld.mod" })]
+        [HarmonyAfter("com.deeprim.rimworld.mod")]
         private static void MapBiomePostfix(Map __instance, ref BiomeDef __result)
         {
-            bool flag = __instance.ParentHolder is DeepRim.UndergroundMapParent;
+            var flag = __instance.ParentHolder is UndergroundMapParent;
             if (flag)
             {
-                __result = DefDatabase<BiomeDef>.GetNamed("Cave", true);
+                __result = DefDatabase<BiomeDef>.GetNamed("Cave");
             }
         }
     }
