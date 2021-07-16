@@ -14,10 +14,7 @@ namespace CaveBiome
                 return;
             }
 
-            if (MapGenerator.PlayerStartSpot.IsValid)
-            {
-            }
-            else
+            if (!MapGenerator.PlayerStartSpot.IsValid)
             {
                 base.Generate(map, parms);
             }

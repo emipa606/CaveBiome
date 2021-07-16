@@ -31,8 +31,8 @@ namespace CaveBiome
             return (
                 from d in DefDatabase<ThingDef>.AllDefs
                 where d.category == ThingCategory.Item && d.tradeability == Tradeability.Sellable &&
-                      d.equipmentType == EquipmentType.None && d.BaseMarketValue >= 1f &&
-                      d.BaseMarketValue < MaxMarketValue && !d.HasComp(typeof(CompHatcher))
+                      d.equipmentType == EquipmentType.None && d.BaseMarketValue is >= 1f and < MaxMarketValue &&
+                      !d.HasComp(typeof(CompHatcher))
                 select d).RandomElementByWeight(delegate(ThingDef d)
             {
                 var num = 100f;

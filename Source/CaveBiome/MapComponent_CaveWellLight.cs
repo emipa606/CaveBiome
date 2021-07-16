@@ -169,7 +169,7 @@ namespace CaveBiome
         private void SetCaveWellBrightness(Thing caveWell, float intensity)
         {
             var glowerComp = caveWell.TryGetComp<CompGlower>();
-            if (glowerComp is not CompGlower)
+            if (glowerComp is not { })
             {
                 return;
             }
