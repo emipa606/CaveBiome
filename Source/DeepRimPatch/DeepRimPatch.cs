@@ -20,8 +20,7 @@ namespace DeepRimPatch
         [HarmonyAfter("com.deeprim.rimworld.mod")]
         private static void MapBiomePostfix(Map __instance, ref BiomeDef __result)
         {
-            var flag = __instance.ParentHolder is UndergroundMapParent;
-            if (flag)
+            if (__instance.ParentHolder is UndergroundMapParent)
             {
                 __result = DefDatabase<BiomeDef>.GetNamed("Cave");
             }

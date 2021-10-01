@@ -40,22 +40,22 @@ namespace CaveBiome
                     }
 
                     riverStart =
-                        new Vector2(Rand.RangeInclusive((int) (map.Size.x * 0.25f), (int) (map.Size.x * 0.75f)),
+                        new Vector2(Rand.RangeInclusive((int)(map.Size.x * 0.25f), (int)(map.Size.x * 0.75f)),
                             -OutOfBoundsOffset);
-                    riverEnd = new Vector2(Rand.RangeInclusive((int) (map.Size.x * 0.25f), (int) (map.Size.x * 0.75f)),
+                    riverEnd = new Vector2(Rand.RangeInclusive((int)(map.Size.x * 0.25f), (int)(map.Size.x * 0.75f)),
                         map.Size.z + OutOfBoundsOffset);
                     break;
                 case 3: // West.
                     riverStart = new Vector2(-OutOfBoundsOffset,
-                        Rand.RangeInclusive((int) (map.Size.z * 0.25f), (int) (map.Size.z * 0.75f)));
+                        Rand.RangeInclusive((int)(map.Size.z * 0.25f), (int)(map.Size.z * 0.75f)));
                     riverEnd = new Vector2(map.Size.x + OutOfBoundsOffset,
-                        Rand.RangeInclusive((int) (map.Size.z * 0.25f), (int) (map.Size.z * 0.75f)));
+                        Rand.RangeInclusive((int)(map.Size.z * 0.25f), (int)(map.Size.z * 0.75f)));
                     break;
             }
 
             // Get straight river points.
             var riverVector = riverEnd - riverStart;
-            var numberOfParts = (int) Math.Ceiling(riverVector.magnitude / RiverPartsGranularity);
+            var numberOfParts = (int)Math.Ceiling(riverVector.magnitude / RiverPartsGranularity);
             var riverVectorNormalized = riverVector / numberOfParts;
             var riverCoordinates = new List<Vector2>();
             var vector = riverStart;
@@ -72,7 +72,7 @@ namespace CaveBiome
             var riverWidth = new List<float>();
             for (var coordinatesIndex = 0; coordinatesIndex < riverCoordinatesCopy.Count; coordinatesIndex++)
             {
-                var perturbation = RiverLateralFactor * (float) perlinMap.GetValue(coordinatesIndex, 0.0, 0.0);
+                var perturbation = RiverLateralFactor * (float)perlinMap.GetValue(coordinatesIndex, 0.0, 0.0);
                 Vector2 pointCoordinates;
                 if (riverEntrySide == Rot4.South)
                 {
@@ -86,7 +86,7 @@ namespace CaveBiome
                 riverCoordinates.Add(pointCoordinates);
 
                 var width = Mathf.Min(
-                    Mathf.Abs(RiverWidthFactor * (float) perlinMap.GetValue(0.0, 0.0, coordinatesIndex)), 8f);
+                    Mathf.Abs(RiverWidthFactor * (float)perlinMap.GetValue(0.0, 0.0, coordinatesIndex)), 8f);
                 riverWidth.Add(width);
             }
 

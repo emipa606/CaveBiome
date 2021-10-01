@@ -7,7 +7,7 @@ namespace CaveBiome
     {
         protected override bool CanFireNowSub(IncidentParms parms)
         {
-            var map = (Map) parms.target;
+            var map = (Map)parms.target;
             return !map.gameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicDrone) &&
                    base.CanFireNowSub(parms);
         }

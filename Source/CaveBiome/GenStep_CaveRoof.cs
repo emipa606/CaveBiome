@@ -22,7 +22,7 @@ namespace CaveBiome
             }
 
             // Compute number of cave wells (5 for standard map 250x250, around 13 for bigest map 400x400).
-            caveWellsNumber = Mathf.CeilToInt(map.Size.x * map.Size.z / (float) 12500);
+            caveWellsNumber = Mathf.CeilToInt(map.Size.x * map.Size.z / (float)12500);
             foreach (var cell in map.AllCells)
             {
                 Thing thing = map.edificeGrid.InnerArray[map.cellIndices.CellToIndex(cell)];
@@ -95,7 +95,7 @@ namespace CaveBiome
 
                     // Check cave well is connected to map edge.
                     var room = cell.GetRoom(map);
-                    if (room is {TouchesMapEdge: true})
+                    if (room is { TouchesMapEdge: true })
                     {
                         return true;
                     }

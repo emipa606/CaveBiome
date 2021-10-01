@@ -12,13 +12,13 @@ namespace CaveBiome
 
         protected override bool CanFireNowSub(IncidentParms parms)
         {
-            var map = (Map) parms.target;
+            var map = (Map)parms.target;
             return map.listerThings.ThingsOfDef(def.mechClusterBuilding).Count <= 0;
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
-            var map = (Map) parms.target;
+            var map = (Map)parms.target;
             var num = 0;
             var countToSpawn = CountToSpawn;
             var vec = IntVec3.Invalid;
@@ -68,7 +68,7 @@ namespace CaveBiome
                 }
 
                 GenExplosion.DoExplosion(spawnCell, map, 3f, DamageDefOf.Flame, null);
-                var building_CrashedShipPart = (Building) GenSpawn.Spawn(def.mechClusterBuilding, spawnCell, map);
+                var building_CrashedShipPart = (Building)GenSpawn.Spawn(def.mechClusterBuilding, spawnCell, map);
                 building_CrashedShipPart.SetFaction(Faction.OfMechanoids);
                 var points = parms.points * ShipPointsFactor;
                 var unused = PawnGroupMakerUtility.GeneratePawns(new PawnGroupMakerParms

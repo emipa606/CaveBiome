@@ -75,7 +75,7 @@ namespace CaveBiome
             }
             else
             {
-                seedPlantsNumber = (int) (cluster.desiredSize * Rand.Range(0.25f, 0.75f));
+                seedPlantsNumber = (int)(cluster.desiredSize * Rand.Range(0.25f, 0.75f));
             }
 
             if (seedPlantsNumber == 0)

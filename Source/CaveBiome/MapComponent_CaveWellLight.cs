@@ -112,9 +112,9 @@ namespace CaveBiome
                 }
             }
 
-            currentGlowColor.r = (int) (caveWellBrightness * caveWellBrightness * baseGlowColor.r);
-            currentGlowColor.g = (int) (caveWellBrightness * caveWellBrightness * baseGlowColor.g);
-            currentGlowColor.b = (int) (caveWellBrightness * caveWellBrightness * baseGlowColor.b);
+            currentGlowColor.r = (int)(caveWellBrightness * caveWellBrightness * baseGlowColor.r);
+            currentGlowColor.g = (int)(caveWellBrightness * caveWellBrightness * baseGlowColor.g);
+            currentGlowColor.b = (int)(caveWellBrightness * caveWellBrightness * baseGlowColor.b);
 
             var caveWellsList = map.listerThings.ThingsOfDef(Util_CaveBiome.CaveWellDef);
             foreach (var caveWell in caveWellsList)

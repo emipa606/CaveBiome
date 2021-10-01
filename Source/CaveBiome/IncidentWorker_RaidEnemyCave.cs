@@ -7,7 +7,7 @@ namespace CaveBiome
     {
         public override void ResolveRaidArriveMode(IncidentParms parms)
         {
-            var map = (Map) parms.target;
+            var map = (Map)parms.target;
             if (map.Biome != Util_CaveBiome.CaveBiomeDef)
             {
                 base.ResolveRaidArriveMode(parms);
@@ -21,7 +21,7 @@ namespace CaveBiome
 
         public override void ResolveRaidStrategy(IncidentParms parms, PawnGroupKindDef groupKind)
         {
-            var map = (Map) parms.target;
+            var map = (Map)parms.target;
             if (map.Biome != Util_CaveBiome.CaveBiomeDef)
             {
                 base.ResolveRaidStrategy(parms, groupKind);

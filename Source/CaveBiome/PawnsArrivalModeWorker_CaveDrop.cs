@@ -25,7 +25,7 @@ namespace CaveBiome
         // Token: 0x06004603 RID: 17923 RVA: 0x001795F0 File Offset: 0x001777F0
         public override bool TryResolveRaidSpawnCenter(IncidentParms parms)
         {
-            var map = (Map) parms.target;
+            var map = (Map)parms.target;
             parms.spawnCenter = FindAGoodSpot(map);
             if (parms.spawnCenter == IntVec3.Invalid)
             {
