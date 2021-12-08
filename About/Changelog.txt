@@ -1,5 +1,8 @@
 # Changelog for CaveBiome
 
+1.0.10.0 - Incidents should now spawn correctly for non-cave biomes.
+
+
 1.0.9.0 - Fixed the resource-pod crash worker
 
 

@@ -1,9 +1,8 @@
 ﻿using Verse;
 
-namespace CaveBiome
+namespace CaveBiome;
+
+public class IncidentWorker_DefoliatorShipPartCrashInCave : IncidentWorker_ShipPartCrashInCave
 {
-    public class IncidentWorker_DefoliatorShipPartCrashInCave : IncidentWorker_ShipPartCrashInCave
-    {
-        protected override int CountToSpawn => Rand.RangeInclusive(1, 1);
-    }
+    protected override int CountToSpawn => Rand.RangeInclusive(1, 1);
 }

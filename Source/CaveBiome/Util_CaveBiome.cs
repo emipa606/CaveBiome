@@ -1,29 +1,28 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace CaveBiome
+namespace CaveBiome;
+
+public static class Util_CaveBiome
 {
-    public static class Util_CaveBiome
-    {
-        // Crystal lamp.
-        public static ThingDef CrystalLampDef => ThingDef.Named("CrystalLamp");
+    // Crystal lamp.
+    public static ThingDef CrystalLampDef => ThingDef.Named("CrystalLamp");
 
-        // Roof and cave well.
-        public static ThingDef CaveRoofDef => ThingDef.Named("CaveRoof");
+    // Roof and cave well.
+    public static ThingDef CaveRoofDef => ThingDef.Named("CaveRoof");
 
-        public static ThingDef CaveWellDef => ThingDef.Named("CaveWell");
+    public static ThingDef CaveWellDef => ThingDef.Named("CaveWell");
 
-        // Weather and light.
-        public static WeatherDef CaveCalmWeatherDef => WeatherDef.Named("CaveCalm");
+    // Weather and light.
+    public static WeatherDef CaveCalmWeatherDef => WeatherDef.Named("CaveCalm");
 
-        public static GameConditionDef CaveEnvironmentGameConditionDef => GameConditionDef.Named("CaveEnvironment");
+    public static GameConditionDef CaveEnvironmentGameConditionDef => GameConditionDef.Named("CaveEnvironment");
 
-        // Biome.
-        public static BiomeDef CaveBiomeDef => BiomeDef.Named("Cave");
+    // Biome.
+    public static BiomeDef CaveBiomeDef => BiomeDef.Named("Cave");
 
-        // Corpses generators.
-        public static ThingDef AnimalCorpsesGeneratorDef => ThingDef.Named("AnimalCorpsesGenerator");
+    // Corpses generators.
+    public static ThingDef AnimalCorpsesGeneratorDef => ThingDef.Named("AnimalCorpsesGenerator");
 
-        public static ThingDef VillagerCorpsesGeneratorDef => ThingDef.Named("VillagerCorpsesGenerator");
-    }
+    public static ThingDef VillagerCorpsesGeneratorDef => ThingDef.Named("VillagerCorpsesGenerator");
 }
