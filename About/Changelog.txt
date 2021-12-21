@@ -1,5 +1,8 @@
 # Changelog for CaveBiome
 
+1.0.11.0 - Rain should no longer short-circuit things unless they are built in a cave-well
+
+
 1.0.10.0 - Incidents should now spawn correctly for non-cave biomes.
 
 
