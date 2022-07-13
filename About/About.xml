@@ -33,6 +33,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=837412700
 
 - Added the map-gens to DeepRim and Z-Levels so some of the features should be visible there.
 - French translation added, thanks qux!
+- Things should no longer short-circuit in the rain unless built in a cave-well
 
 [img]https://i.imgur.com/pufA0kM.png[/img]
 
@@ -40,7 +41,11 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=837412700
 	[tr]
 		[td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
 		[td][url=https://github.com/emipa606/CaveBiome][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
-	[/tr]
+    [/tr]
+    [tr]
+        [td][img]https://i.imgur.com/XLUGyo4.png[/img][/td]
+        [td][img]https://i.imgur.com/6KqTKks.png[/img][/td]
+    [/tr]
 [/table]
 	
 [img]https://i.imgur.com/Z4GOv8H.png[/img]
