@@ -86,29 +86,31 @@ public class MapComponent_CaveWellLight : MapComponent
         }
         else
         {
-            if (gamehour < sunriseBeginHour)
+            switch (gamehour)
             {
-                caveWellBrightness = brightnessCaveWellMin;
-            }
-            else if (gamehour < sunriseEndHour)
-            {
-                var sunriseProgress = Math.Max(0f, gamehour - sunriseBeginHour) /
-                                      (sunriseEndHour - sunriseBeginHour);
-                caveWellBrightness = sunriseProgress * brightnessCaveWellMax;
-            }
-            else if (gamehour < sunsetBeginHour)
-            {
-                caveWellBrightness = brightnessCaveWellMax;
-            }
-            else if (gamehour < sunsetEndHour)
-            {
-                var sunsetProgress =
-                    Math.Max(0f, gamehour - sunsetBeginHour) / (sunsetEndHour - sunsetBeginHour);
-                caveWellBrightness = 1 - (sunsetProgress * brightnessCaveWellMax);
-            }
-            else
-            {
-                caveWellBrightness = brightnessCaveWellMin;
+                case < sunriseBeginHour:
+                    caveWellBrightness = brightnessCaveWellMin;
+                    break;
+                case < sunriseEndHour:
+                {
+                    var sunriseProgress = Math.Max(0f, gamehour - sunriseBeginHour) /
+                                          (sunriseEndHour - sunriseBeginHour);
+                    caveWellBrightness = sunriseProgress * brightnessCaveWellMax;
+                    break;
+                }
+                case < sunsetBeginHour:
+                    caveWellBrightness = brightnessCaveWellMax;
+                    break;
+                case < sunsetEndHour:
+                {
+                    var sunsetProgress =
+                        Math.Max(0f, gamehour - sunsetBeginHour) / (sunsetEndHour - sunsetBeginHour);
+                    caveWellBrightness = 1 - (sunsetProgress * brightnessCaveWellMax);
+                    break;
+                }
+                default:
+                    caveWellBrightness = brightnessCaveWellMin;
+                    break;
             }
         }
 

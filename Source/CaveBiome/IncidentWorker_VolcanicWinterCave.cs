@@ -8,11 +8,6 @@ public class IncidentWorker_VolcanicWinterCave : IncidentWorker_MakeGameConditio
     protected override bool CanFireNowSub(IncidentParms parms)
     {
         var map = (Map)parms.target;
-        if (map.Biome == Util_CaveBiome.CaveBiomeDef)
-        {
-            return false;
-        }
-
-        return base.CanFireNowSub(parms);
+        return map.Biome != Util_CaveBiome.CaveBiomeDef && base.CanFireNowSub(parms);
     }
 }

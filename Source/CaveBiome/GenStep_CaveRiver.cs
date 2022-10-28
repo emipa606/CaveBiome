@@ -33,10 +33,9 @@ public class GenStep_CaveRiver : GenStep
         switch (riverEntrySideAsInt)
         {
             default:
-                if (riverEntrySideAsInt == 0
-                    || riverEntrySideAsInt == 1)
+                if (riverEntrySideAsInt is 0 or 1)
                 {
-                    Log.Warning("CaveBiome: river entry side (" + riverEntrySideAsInt + ") should not occur.");
+                    Log.Warning($"CaveBiome: river entry side ({riverEntrySideAsInt}) should not occur.");
                 }
 
                 riverStart =

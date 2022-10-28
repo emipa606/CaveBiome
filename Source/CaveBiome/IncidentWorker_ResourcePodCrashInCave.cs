@@ -53,15 +53,10 @@ public class IncidentWorker_ResourcePodCrashInCave : IncidentWorker_ResourcePodC
 
     private static bool IsValidPositionToSpawnDropPod(Map map, IntVec3 position)
     {
-        if (position.InBounds(map) == false
-            || position.Fogged(map)
-            || position.Standable(map) == false
-            || position.Roofed(map)
-            && position.GetRoof(map).isThickRoof)
-        {
-            return false;
-        }
-
-        return true;
+        return position.InBounds(map)
+               && !position.Fogged(map)
+               && position.Standable(map)
+               && (!position.Roofed(map)
+                   || !position.GetRoof(map).isThickRoof);
     }
 }

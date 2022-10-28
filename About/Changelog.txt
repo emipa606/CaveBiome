@@ -1,5 +1,9 @@
 # Changelog for CaveBiome
 
+1.4.1 - Mod updated for 1.4 and passed autotests.
+Used DeepL to update translations for German, Russian
+
+
 1.0.11.0 - Rain should no longer short-circuit things unless they are built in a cave-well
 
 

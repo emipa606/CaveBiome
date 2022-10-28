@@ -25,8 +25,7 @@ public class BiomeWorker_Cave : BiomeWorker
             return -100f;
         }
 
-        if (tile.elevation < 1000f
-            || tile.elevation > 3000f)
+        if (tile.elevation is < 1000f or > 3000f)
         {
             return 0f;
         }

@@ -7,6 +7,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=837412700
 
 - Added the map-gens to DeepRim and Z-Levels so some of the features should be visible there.
 - French translation added, thanks qux!
+- Things should no longer short-circuit in the rain unless built in a cave-well
 
 ![Image](https://i.imgur.com/pufA0kM.png)
 
@@ -29,6 +30,7 @@ See the forum thread for content/changelog and related mods. https://ludeon.com/
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
+
 
 
 

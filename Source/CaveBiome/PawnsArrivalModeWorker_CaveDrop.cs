@@ -40,13 +40,10 @@ public class PawnsArrivalModeWorker_CaveDrop : PawnsArrivalModeWorker
             return IntVec3.Invalid;
         }
 
-        if ((from caveWell in caveWellsList
-                where DropCellFinder.TryFindDropSpotNear(caveWell.Position, map, out _, false, false)
-                select caveWell.Position).TryRandomElement(out var dropPlace))
-        {
-            return dropPlace;
-        }
-
-        return IntVec3.Invalid;
+        return (from caveWell in caveWellsList
+            where DropCellFinder.TryFindDropSpotNear(caveWell.Position, map, out _, false, false)
+            select caveWell.Position).TryRandomElement(out var dropPlace)
+            ? dropPlace
+            : IntVec3.Invalid;
     }
 }

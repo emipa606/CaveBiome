@@ -8,11 +8,6 @@ public class IncidentWorker_FlashstormCave : IncidentWorker_Flashstorm
     protected override bool CanFireNowSub(IncidentParms parms)
     {
         var map = (Map)parms.target;
-        if (map.Biome != Util_CaveBiome.CaveBiomeDef)
-        {
-            return base.CanFireNowSub(parms);
-        }
-
-        return false;
+        return map.Biome != Util_CaveBiome.CaveBiomeDef && base.CanFireNowSub(parms);
     }
 }
