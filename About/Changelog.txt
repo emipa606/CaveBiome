@@ -1,5 +1,8 @@
 # Changelog for CaveBiome
 
+1.4.3 - Added the vanilla fishing patch to 1.3 as well
+
+
 1.4.2 - Added patch for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1914064942]Vanilla Fishing Expanded[/url]
 
 

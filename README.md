@@ -8,6 +8,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=837412700
 - Added the map-gens to DeepRim and Z-Levels so some of the features should be visible there.
 - French translation added, thanks qux!
 - Things should no longer short-circuit in the rain unless built in a cave-well
+- Added patch for https://steamcommunity.com/sharedfiles/filedetails/?id=1914064942]Vanilla Fishing Expanded
 
 ![Image](https://i.imgur.com/pufA0kM.png)
 
@@ -32,6 +33,4 @@ See the forum thread for content/changelog and related mods. https://ludeon.com/
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
-
-
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2259124387]Last updated 2023-01-28
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2259124387]Last updated 2023-01-31
