@@ -33,4 +33,4 @@ See the forum thread for content/changelog and related mods. https://ludeon.com/
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2259124387]Last updated 2023-01-31
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2259124387]Last updated 2023-05-02

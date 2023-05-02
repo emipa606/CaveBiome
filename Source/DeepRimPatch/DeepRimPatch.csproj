@@ -6,7 +6,7 @@
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <DebugType>None</DebugType>
     <LangVersion>latest</LangVersion>
-    <FileVersion>1.4.1</FileVersion>
+    <FileVersion>1.4.4</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
@@ -22,8 +22,8 @@
   <ItemGroup>
     <Reference Include="DeepRim">
       <HintPath>..\..\..\DeepRim\1.4\Assemblies\DeepRim.dll</HintPath>
-	    <CopyLocal>False</CopyLocal>
-	    <Private>false</Private>
+      <CopyLocal>False</CopyLocal>
+      <Private>false</Private>
     </Reference>
   </ItemGroup>
 </Project>

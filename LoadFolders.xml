@@ -18,6 +18,5 @@
   <v1.4>
     <li>/</li>
     <li>1.4</li>
-    <li IfModActive="Mlie.DeepRim">DeepRim/1.4</li>
   </v1.4>
 </loadFolders>
