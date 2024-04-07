@@ -82,6 +82,20 @@ public class GenStep_CaveRoof : GenStep
         };
         for (var caveWellIndex = 1; caveWellIndex < caveWellsNumber; caveWellIndex++)
         {
+            var caveWellCellIsFound =
+                CellFinderLoose.TryFindRandomNotEdgeCellWith(20, validator, map, out var caveWellCell);
+            if (caveWellCellIsFound)
+            {
+                positionsList.Add(caveWellCell);
+            }
+            else
+            {
+                CellFinderLoose.TryFindRandomNotEdgeCellWith(20, null, map, out caveWellCell);
+                positionsList.Add(caveWellCell);
+            }
+
+            continue;
+
             bool validator(IntVec3 cell)
             {
                 // Check cave well is not too close from another one.
@@ -95,24 +109,7 @@ public class GenStep_CaveRoof : GenStep
 
                 // Check cave well is connected to map edge.
                 var room = cell.GetRoom(map);
-                if (room is { TouchesMapEdge: true })
-                {
-                    return true;
-                }
-
-                return false;
-            }
-
-            var caveWellCellIsFound =
-                CellFinderLoose.TryFindRandomNotEdgeCellWith(20, validator, map, out var caveWellCell);
-            if (caveWellCellIsFound)
-            {
-                positionsList.Add(caveWellCell);
-            }
-            else
-            {
-                CellFinderLoose.TryFindRandomNotEdgeCellWith(20, null, map, out caveWellCell);
-                positionsList.Add(caveWellCell);
+                return room is { TouchesMapEdge: true };
             }
         }
 

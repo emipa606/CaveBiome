@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <PawnsArrivalModeDef>
+    <defName>CaveDrop</defName>
+    <workerClass>CaveBiome.PawnsArrivalModeWorker_CaveDrop</workerClass>
+    <selectionWeightCurve>
+      <!-- not usable in many strategies and by many factions, so this gets boosted -->
+      <points>
+        <li>(300, 0.0)</li>
+        <li>(1000, 3.5)</li>
+      </points>
+    </selectionWeightCurve>
+    <pointsFactorCurve>
+      <points>
+        <li>0, 0.5</li>
+        <li>5000, 0.3</li>
+      </points>
+    </pointsFactorCurve>
+    <minTechLevel>Industrial</minTechLevel>
+    <textEnemy>A group of {0} from {1} have dropped in a nearby cave-opening!</textEnemy>
+    <textFriendly>A group of friendly {0} from {1} have dropped in a nearby cave-opening!</textFriendly>
+    <textWillArrive>{0_pawnsPluralDef} will arrive in transport pods a nearby cave-opening.</textWillArrive>
+  </PawnsArrivalModeDef>
+</Defs>

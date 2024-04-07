@@ -1,5 +1,4 @@
-﻿using System;
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 
 namespace CaveBiome;
@@ -31,7 +30,7 @@ public class IncidentWorker_ResourcePodCrashInCave : IncidentWorker_ResourcePodC
 
         DropPodUtility.DropThingsNear(intVec, map, things, 110, false, true);
         SendStandardLetter("LetterLabelCargoPodCrash".Translate(), "CargoPodCrash".Translate(),
-            LetterDefOf.PositiveEvent, parms, new TargetInfo(intVec, map), Array.Empty<NamedArgument>());
+            LetterDefOf.PositiveEvent, parms, new TargetInfo(intVec, map), []);
         return true;
     }
 

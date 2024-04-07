@@ -7,12 +7,12 @@ namespace CaveBiome;
 public class IncidentWorker_ShipChunkDropInCave : IncidentWorker_ShipChunkDrop
 {
     private static readonly Pair<int, float>[] CountChance =
-    {
+    [
         new Pair<int, float>(1, 1f),
         new Pair<int, float>(2, 0.95f),
         new Pair<int, float>(3, 0.7f),
         new Pair<int, float>(4, 0.4f)
-    };
+    ];
 
     private int RandomCountToDrop
     {

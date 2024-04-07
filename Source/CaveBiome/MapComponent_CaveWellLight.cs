@@ -171,7 +171,7 @@ public class MapComponent_CaveWellLight : MapComponent
     private void SetCaveWellBrightness(Thing caveWell, float intensity)
     {
         var glowerComp = caveWell.TryGetComp<CompGlower>();
-        if (glowerComp is not { })
+        if (glowerComp is null)
         {
             return;
         }
@@ -179,6 +179,6 @@ public class MapComponent_CaveWellLight : MapComponent
         glowerComp.Props.glowRadius = intensity * lightRadiusCaveWellMax;
         glowerComp.Props.overlightRadius = intensity * lightRadiusCaveWellMax;
         glowerComp.Props.glowColor = currentGlowColor;
-        caveWell.Map.glowGrid.MarkGlowGridDirty(caveWell.Position);
+        caveWell.Map.glowGrid.DirtyCache(caveWell.Position);
     }
 }

@@ -26,24 +26,6 @@ public class Building_AnimalCorpsesGenerator : Building
         var animalCorpsesNumber = Rand.Range(3, 7);
         for (var corpseIndex = 0; corpseIndex < animalCorpsesNumber; corpseIndex++)
         {
-            bool validator(IntVec3 cell)
-            {
-                if (cell.Standable(Map) == false)
-                {
-                    return false;
-                }
-
-                foreach (var thing in Map.thingGrid.ThingsListAt(cell))
-                {
-                    if (thing is Corpse)
-                    {
-                        return false;
-                    }
-                }
-
-                return true;
-            }
-
             var spawnCellIsFound = CellFinder.TryFindRandomCellNear(Position, Map, 5, validator, out var spawnCell);
             if (!spawnCellIsFound)
             {
@@ -67,6 +49,25 @@ public class Building_AnimalCorpsesGenerator : Building
 
             Building_VillagerCorpsesGenerator.SpawnPawnCorpse(Map, spawnCell, animalKindDef, null,
                 Rand.Range(5f, 20f) * GenDate.TicksPerDay);
+            continue;
+
+            bool validator(IntVec3 cell)
+            {
+                if (cell.Standable(Map) == false)
+                {
+                    return false;
+                }
+
+                foreach (var thing in Map.thingGrid.ThingsListAt(cell))
+                {
+                    if (thing is Corpse)
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
         }
     }
 }

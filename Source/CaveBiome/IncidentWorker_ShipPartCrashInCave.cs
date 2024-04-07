@@ -45,7 +45,7 @@ public abstract class IncidentWorker_ShipPartCrashInCave : IncidentWorker_Crashe
             var building_CrashedShipPart = (Building)GenSpawn.Spawn(def.mechClusterBuilding, spawnCell, map);
             building_CrashedShipPart.SetFaction(Faction.OfMechanoids);
             var points = parms.points * ShipPointsFactor;
-            var unused = PawnGroupMakerUtility.GeneratePawns(new PawnGroupMakerParms
+            _ = PawnGroupMakerUtility.GeneratePawns(new PawnGroupMakerParms
             {
                 groupKind = PawnGroupKindDefOf.Combat,
                 tile = map.Tile,
