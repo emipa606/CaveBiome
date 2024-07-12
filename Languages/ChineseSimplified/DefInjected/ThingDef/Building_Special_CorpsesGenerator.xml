@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <AnimalCorpsesGenerator.label>animal corpses generator</AnimalCorpsesGenerator.label>
   <AnimalCorpsesGenerator.description>This building is only used to generate dead corpses of animal which fall into a cave well. It will remove itself once this is performed.
