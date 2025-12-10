@@ -13,7 +13,7 @@ namespace CaveBiome;
 /// </permission>
 public class Building_AnimalCorpsesGenerator : Building
 {
-    public override void Tick()
+    protected override void Tick()
     {
         base.Tick();
 

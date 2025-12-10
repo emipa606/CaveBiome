@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/IncidentDef[defName = "RaidEnemy"]/workerClass</xpath>
+    <value>
+      <workerClass>CaveBiome.IncidentWorker_RaidEnemyCave</workerClass>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/IncidentDef[defName = "PsychicEmanatorShipPartCrash"]/workerClass</xpath>
+    <value>
+      <workerClass>CaveBiome.IncidentWorker_PsychicEmanatorShipPartCrashInCave</workerClass>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/IncidentDef[defName = "DefoliatorShipPartCrash"]/workerClass</xpath>
+    <value>
+      <workerClass>CaveBiome.IncidentWorker_DefoliatorShipPartCrashInCave</workerClass>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/IncidentDef[defName = "MechCluster"]/workerClass</xpath>
+    <value>
+      <workerClass>CaveBiome.IncidentWorker_MechClusterCave</workerClass>
+    </value>
+  </Operation>
+</Patch>

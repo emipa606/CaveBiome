@@ -12,7 +12,7 @@ namespace CaveBiome;
 
 public class BiomeWorker_Cave : BiomeWorker
 {
-    public override float GetScore(Tile tile, int tileID)
+    public override float GetScore(BiomeDef biomeDef, Tile tile, PlanetTile tileID)
     {
         if (tile.hilliness != Hilliness.Mountainous
             && tile.hilliness != Hilliness.LargeHills)
