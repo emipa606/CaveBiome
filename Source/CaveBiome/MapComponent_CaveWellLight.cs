@@ -179,6 +179,6 @@ public class MapComponent_CaveWellLight : MapComponent
         glowerComp.Props.glowRadius = intensity * lightRadiusCaveWellMax;
         glowerComp.Props.overlightRadius = intensity * lightRadiusCaveWellMax;
         glowerComp.Props.glowColor = currentGlowColor;
-        caveWell.Map.glowGrid.DirtyCache(caveWell.Position);
+        caveWell.Map.glowGrid.DirtyCell(caveWell.Position);
     }
 }

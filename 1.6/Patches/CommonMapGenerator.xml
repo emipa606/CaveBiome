@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationInsert">
+    <xpath>/Defs/MapGeneratorDef/genSteps/li[text()="Terrain"]</xpath>
+    <value>
+      <li>CaveElevation</li>
+      <li>CaveRiver</li>
+      <li>CaveRoof</li>
+      <li>CaveInitializeWeatherAndLight</li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/GenStepDef[defName="FindPlayerStartSpot"]/genStep</xpath>
+    <value>
+      <genStep Class="CaveBiome.GenStep_CaveFindPlayerStartSpot" />
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/GenStepDef[defName="Plants"]/genStep</xpath>
+    <value>
+      <genStep Class="CaveBiome.GenStep_CavePlants" />
+    </value>
+  </Operation>
+</Patch>

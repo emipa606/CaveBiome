@@ -83,14 +83,22 @@ public class GenStep_CavePlants : GenStep_Plants
             return;
         }
 
+        //for (var seedPlantIndex = 0; seedPlantIndex < seedPlantsNumber; seedPlantIndex++)
+        // {
+        //     var seedPlant =
+        //         GenClusterPlantReproduction.TryGrowCluster(cluster, false); // Ignore temperature condition.
+        //     if (seedPlant != null)
+        //     {
+        //         seedPlant.Growth = Rand.Range(plantMinGrowth, plantMaxGrowth);
+        //     }
+        //  }
+
         for (var seedPlantIndex = 0; seedPlantIndex < seedPlantsNumber; seedPlantIndex++)
         {
-            var seedPlant =
-                GenClusterPlantReproduction.TryGrowCluster(cluster, false); // Ignore temperature condition.
-            if (seedPlant != null)
-            {
-                seedPlant.Growth = Rand.Range(plantMinGrowth, plantMaxGrowth);
-            }
+            var growthRange = new FloatRange(plantMinGrowth, plantMaxGrowth);
+
+            // Ignore temperature condition
+            GenClusterPlantReproduction.TryGrowCluster(cluster, checkTemperature: false, startingGrowth: growthRange);
         }
 
         if (!clusterIsMature || cluster.plantDef.symbiosisPlantDefEvolution == null)
