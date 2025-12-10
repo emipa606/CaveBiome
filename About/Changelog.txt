@@ -1,5 +1,9 @@
 # Changelog for CaveBiome
 
+1.6.0 - Updated to 1.6, thanks Zaljerem!
+Used DeepL to update translations for German, Russian
+
+
 1.5.1 - Removed redundant english def-translation
 
 

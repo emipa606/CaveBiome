@@ -102,7 +102,7 @@ public class GenStep_CaveRiver : GenStep
                 // Generate mud.
                 foreach (var cell in GenRadial.RadialCellsAround(point, width + 1.9f, true))
                 {
-                    if (cell.InBounds(map) == false)
+                    if (!cell.InBounds(map))
                     {
                         continue;
                     }
@@ -115,7 +115,7 @@ public class GenStep_CaveRiver : GenStep
 
                     var terrain = map.terrainGrid.TerrainAt(cell);
                     // Do not change stony terrains and do not put mud on top of existing water patch.
-                    if (terrain.defName.Contains("Rough") == false
+                    if (!terrain.defName.Contains("Rough")
                         && terrain != TerrainDefOf.WaterShallow
                         && terrain != TerrainDefOf.WaterDeep
                         && terrain != TerrainDefOf.WaterOceanShallow
@@ -130,7 +130,7 @@ public class GenStep_CaveRiver : GenStep
                 // Generate shallow moving water and remove building.
                 foreach (var cell in GenRadial.RadialCellsAround(point, width, true))
                 {
-                    if (cell.InBounds(map) == false)
+                    if (!cell.InBounds(map))
                     {
                         continue;
                     }
@@ -155,7 +155,7 @@ public class GenStep_CaveRiver : GenStep
 
                 foreach (var cell in GenRadial.RadialCellsAround(point, width - 3.9f, true))
                 {
-                    if (cell.InBounds(map) == false)
+                    if (!cell.InBounds(map))
                     {
                         continue;
                     }

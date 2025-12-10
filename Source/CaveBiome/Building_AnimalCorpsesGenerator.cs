@@ -17,11 +17,11 @@ public class Building_AnimalCorpsesGenerator : Building
     {
         base.Tick();
 
-        GenerateAnimalCorpses();
+        generateAnimalCorpses();
         Destroy();
     }
 
-    private void GenerateAnimalCorpses()
+    private void generateAnimalCorpses()
     {
         var animalCorpsesNumber = Rand.Range(3, 7);
         for (var corpseIndex = 0; corpseIndex < animalCorpsesNumber; corpseIndex++)
@@ -53,7 +53,7 @@ public class Building_AnimalCorpsesGenerator : Building
 
             bool validator(IntVec3 cell)
             {
-                if (cell.Standable(Map) == false)
+                if (!cell.Standable(Map))
                 {
                     return false;
                 }

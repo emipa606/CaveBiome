@@ -15,14 +15,14 @@ public class PawnsArrivalModeWorker_CaveDrop : PawnsArrivalModeWorker
 
     public override void TravellingTransportersArrived(List<ActiveTransporterInfo> dropPods, Map map)
     {
-        var near = FindAGoodSpot(map);
+        var near = findAGoodSpot(map);
         TransportersArrivalActionUtility.DropTravellingDropPods(dropPods, near, map);
     }
 
     public override bool TryResolveRaidSpawnCenter(IncidentParms parms)
     {
         var map = (Map)parms.target;
-        parms.spawnCenter = FindAGoodSpot(map);
+        parms.spawnCenter = findAGoodSpot(map);
         if (parms.spawnCenter == IntVec3.Invalid)
         {
             return false;
@@ -32,7 +32,7 @@ public class PawnsArrivalModeWorker_CaveDrop : PawnsArrivalModeWorker
         return true;
     }
 
-    private IntVec3 FindAGoodSpot(Map map)
+    private IntVec3 findAGoodSpot(Map map)
     {
         var caveWellsList = map.listerThings.ThingsOfDef(Util_CaveBiome.CaveWellDef);
         if (caveWellsList.Count == 0)

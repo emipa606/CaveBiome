@@ -6,7 +6,8 @@
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <DebugType>None</DebugType>
     <LangVersion>latest</LangVersion>
-    <FileVersion>1.5.0</FileVersion>
+    <FileVersion>1.6.0</FileVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">

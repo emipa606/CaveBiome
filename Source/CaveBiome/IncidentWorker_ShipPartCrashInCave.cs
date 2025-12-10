@@ -34,9 +34,9 @@ public abstract class IncidentWorker_ShipPartCrashInCave : IncidentWorker_Crashe
         var vec = IntVec3.Invalid;
         for (var i = 0; i < countToSpawn; i++)
         {
-            TryFindShipCrashSite(map, out var spawnCell);
+            tryFindShipCrashSite(map, out var spawnCell);
 
-            if (spawnCell.IsValid == false)
+            if (!spawnCell.IsValid)
             {
                 break;
             }
@@ -68,13 +68,13 @@ public abstract class IncidentWorker_ShipPartCrashInCave : IncidentWorker_Crashe
         return true;
     }
 
-    private void TryFindShipCrashSite(Map map, out IntVec3 spawnCell)
+    private void tryFindShipCrashSite(Map map, out IntVec3 spawnCell)
     {
         spawnCell = IntVec3.Invalid;
         var caveWellsList = map.listerThings.ThingsOfDef(Util_CaveBiome.CaveWellDef);
         foreach (var caveWell in caveWellsList.InRandomOrder())
         {
-            if (!IsValidPositionForShipCrashSite(map, caveWell.Position))
+            if (!isValidPositionForShipCrashSite(map, caveWell.Position))
             {
                 continue;
             }
@@ -84,9 +84,9 @@ public abstract class IncidentWorker_ShipPartCrashInCave : IncidentWorker_Crashe
         }
     }
 
-    private bool IsValidPositionForShipCrashSite(Map map, IntVec3 position)
+    private bool isValidPositionForShipCrashSite(Map map, IntVec3 position)
     {
-        if (position.InBounds(map) == false
+        if (!position.InBounds(map)
             || position.Fogged(map))
         {
             return false;
@@ -94,9 +94,9 @@ public abstract class IncidentWorker_ShipPartCrashInCave : IncidentWorker_Crashe
 
         foreach (var checkedPosition in GenAdj.CellsOccupiedBy(position, Rot4.North, def.mechClusterBuilding.size))
         {
-            if (checkedPosition.Standable(map) == false
+            if (!checkedPosition.Standable(map)
                 || checkedPosition.Roofed(map)
-                || map.reachability.CanReachColony(checkedPosition) == false)
+                || !map.reachability.CanReachColony(checkedPosition))
             {
                 return false;
             }

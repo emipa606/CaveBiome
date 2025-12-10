@@ -2,6 +2,16 @@
   "Continued": true,
   "CanAdd": "1",
   "CanRemove": "1",
-  "PreviewVersion": "1.5",
-  "SocialImageSet": true
+  "PreviewVersion": "1.6",
+  "SocialImageSet": true,
+  "LastXmlCleaning": "2025-12-10T13:27:39.109378+01:00",
+  "Patches": true,
+  "Defs": true,
+  "Assemblies": true,
+  "LinesOfCode": 59865,
+  "LinesOfXML": 37913,
+  "SearchTags": [
+    " underground",
+    " settlement"
+  ]
 }

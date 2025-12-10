@@ -17,7 +17,7 @@ public class IncidentWorker_ResourcePodCrashInCave : IncidentWorker_ResourcePodC
         IntVec3 intVec;
         if (map.Biome == Util_CaveBiome.CaveBiomeDef)
         {
-            TryFindDropPodSpot(map, out intVec);
+            tryFindDropPodSpot(map, out intVec);
             if (!intVec.IsValid)
             {
                 return false;
@@ -30,17 +30,17 @@ public class IncidentWorker_ResourcePodCrashInCave : IncidentWorker_ResourcePodC
 
         DropPodUtility.DropThingsNear(intVec, map, things, 110, false, true);
         SendStandardLetter("LetterLabelCargoPodCrash".Translate(), "CargoPodCrash".Translate(),
-            LetterDefOf.PositiveEvent, parms, new TargetInfo(intVec, map), []);
+            LetterDefOf.PositiveEvent, parms, new TargetInfo(intVec, map));
         return true;
     }
 
-    private void TryFindDropPodSpot(Map map, out IntVec3 spawnCell)
+    private static void tryFindDropPodSpot(Map map, out IntVec3 spawnCell)
     {
         spawnCell = IntVec3.Invalid;
         var caveWellsList = map.listerThings.ThingsOfDef(Util_CaveBiome.CaveWellDef);
         foreach (var caveWell in caveWellsList.InRandomOrder())
         {
-            if (!IsValidPositionToSpawnDropPod(map, caveWell.Position))
+            if (!isValidPositionToSpawnDropPod(map, caveWell.Position))
             {
                 continue;
             }
@@ -50,7 +50,7 @@ public class IncidentWorker_ResourcePodCrashInCave : IncidentWorker_ResourcePodC
         }
     }
 
-    private static bool IsValidPositionToSpawnDropPod(Map map, IntVec3 position)
+    private static bool isValidPositionToSpawnDropPod(Map map, IntVec3 position)
     {
         return position.InBounds(map)
                && !position.Fogged(map)

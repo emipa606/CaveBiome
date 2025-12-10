@@ -42,27 +42,27 @@ public class GenStep_CaveRoof : GenStep
         map.regionAndRoomUpdater.RebuildAllRegionsAndRooms();
 
         // Get cave wells position.
-        caveWellsPosition = GetCaveWellsPosition(map);
+        caveWellsPosition = getCaveWellsPosition(map);
 
         // Spawn cave wells.
         // First cave well is always dry (to avoid starting thing scattering errors).
-        SpawnDryCaveWellWithAnimalCorpsesAt(map, caveWellsPosition[0]);
+        spawnDryCaveWellWithAnimalCorpsesAt(map, caveWellsPosition[0]);
         for (var caveWellIndex = 1; caveWellIndex < caveWellsNumber; caveWellIndex++)
         {
-            if (Rand.Value < 0.5f)
+            switch (Rand.Value)
             {
-                // Spawn aqueous cave well.
-                SpawnAqueousCaveWellAt(map, caveWellsPosition[caveWellIndex]);
-            }
-            else if (Rand.Value < 0.9f)
-            {
-                // Spawn dry cave well + fallen animal corpses.
-                SpawnDryCaveWellWithAnimalCorpsesAt(map, caveWellsPosition[caveWellIndex]);
-            }
-            else
-            {
-                // Spawn dry cave well + sacrificial stone.
-                SpawnDryCaveWellWithRitualStoneAt(map, caveWellsPosition[caveWellIndex]);
+                case < 0.5f:
+                    // Spawn aqueous cave well.
+                    spawnAqueousCaveWellAt(map, caveWellsPosition[caveWellIndex]);
+                    break;
+                case < 0.9f:
+                    // Spawn dry cave well + fallen animal corpses.
+                    spawnDryCaveWellWithAnimalCorpsesAt(map, caveWellsPosition[caveWellIndex]);
+                    break;
+                default:
+                    // Spawn dry cave well + sacrificial stone.
+                    spawnDryCaveWellWithRitualStoneAt(map, caveWellsPosition[caveWellIndex]);
+                    break;
             }
         }
 
@@ -71,7 +71,7 @@ public class GenStep_CaveRoof : GenStep
         map.regionAndRoomUpdater.RebuildAllRegionsAndRooms();
     }
 
-    private static List<IntVec3> GetCaveWellsPosition(Map map)
+    private static List<IntVec3> getCaveWellsPosition(Map map)
     {
         const float DistanceBeetweenCaveWells = 40f;
 
@@ -84,15 +84,12 @@ public class GenStep_CaveRoof : GenStep
         {
             var caveWellCellIsFound =
                 CellFinderLoose.TryFindRandomNotEdgeCellWith(20, validator, map, out var caveWellCell);
-            if (caveWellCellIsFound)
-            {
-                positionsList.Add(caveWellCell);
-            }
-            else
+            if (!caveWellCellIsFound)
             {
                 CellFinderLoose.TryFindRandomNotEdgeCellWith(20, null, map, out caveWellCell);
-                positionsList.Add(caveWellCell);
             }
+
+            positionsList.Add(caveWellCell);
 
             continue;
 
@@ -116,13 +113,13 @@ public class GenStep_CaveRoof : GenStep
         return positionsList;
     }
 
-    private static void SpawnAqueousCaveWellAt(Map map, IntVec3 position)
+    private static void spawnAqueousCaveWellAt(Map map, IntVec3 position)
     {
         // Spawn main hole.
-        SetCellsInRadiusNoRoofNoRock(map, position, 10f);
-        SpawnCaveWellOpening(map, position);
-        SetCellsInRadiusTerrain(map, position, 10f, TerrainDefOf.Gravel);
-        SetCellsInRadiusTerrain(map, position, 8f, TerrainDefOf.WaterShallow);
+        setCellsInRadiusNoRoofNoRock(map, position, 10f);
+        spawnCaveWellOpening(map, position);
+        setCellsInRadiusTerrain(map, position, 10f, TerrainDefOf.Gravel);
+        setCellsInRadiusTerrain(map, position, 8f, TerrainDefOf.WaterShallow);
 
         // Spawn small additional holes.
         var smallHolesNumber = Rand.RangeInclusive(2, 5);
@@ -130,15 +127,15 @@ public class GenStep_CaveRoof : GenStep
         {
             var smallHolePosition =
                 position + (7f * Vector3Utility.HorizontalVectorFromAngle(Rand.Range(0, 360))).ToIntVec3();
-            SetCellsInRadiusNoRoofNoRock(map, smallHolePosition, 5f);
-            SetCellsInRadiusTerrain(map, smallHolePosition, 3.2f, TerrainDefOf.WaterShallow);
-            SetCellsInRadiusTerrain(map, smallHolePosition, 2.1f, TerrainDefOf.WaterDeep);
+            setCellsInRadiusNoRoofNoRock(map, smallHolePosition, 5f);
+            setCellsInRadiusTerrain(map, smallHolePosition, 3.2f, TerrainDefOf.WaterShallow);
+            setCellsInRadiusTerrain(map, smallHolePosition, 2.1f, TerrainDefOf.WaterDeep);
         }
 
-        SetCellsInRadiusTerrain(map, position, 5.2f, TerrainDefOf.WaterDeep);
+        setCellsInRadiusTerrain(map, position, 5.2f, TerrainDefOf.WaterDeep);
     }
 
-    private static void SpawnCaveWellOpening(Map map, IntVec3 position)
+    private static void spawnCaveWellOpening(Map map, IntVec3 position)
     {
         var potentialCaveWell = position.GetFirstThing(map, Util_CaveBiome.CaveWellDef);
         if (potentialCaveWell == null)
@@ -156,25 +153,25 @@ public class GenStep_CaveRoof : GenStep
         }
     }
 
-    private static void SpawnDryCaveWellWithAnimalCorpsesAt(Map map, IntVec3 position)
+    private static void spawnDryCaveWellWithAnimalCorpsesAt(Map map, IntVec3 position)
     {
-        SpawnDryCaveWellAt(map, position);
-        SpawnAnimalCorpsesMaker(map, position);
+        spawnDryCaveWellAt(map, position);
+        spawnAnimalCorpsesMaker(map, position);
     }
 
-    private static void SpawnDryCaveWellWithRitualStoneAt(Map map, IntVec3 position)
+    private static void spawnDryCaveWellWithRitualStoneAt(Map map, IntVec3 position)
     {
-        SpawnDryCaveWellAt(map, position);
-        SpawnRitualStone(map, position);
+        spawnDryCaveWellAt(map, position);
+        spawnRitualStone(map, position);
     }
 
-    private static void SpawnDryCaveWellAt(Map map, IntVec3 position)
+    private static void spawnDryCaveWellAt(Map map, IntVec3 position)
     {
         // Spawn main hole.
-        SetCellsInRadiusNoRoofNoRock(map, position, 10f);
-        SpawnCaveWellOpening(map, position);
-        SetCellsInRadiusTerrain(map, position, 10f, TerrainDefOf.Gravel);
-        SetCellsInRadiusTerrain(map, position, 8f, TerrainDefOf.Soil);
+        setCellsInRadiusNoRoofNoRock(map, position, 10f);
+        spawnCaveWellOpening(map, position);
+        setCellsInRadiusTerrain(map, position, 10f, TerrainDefOf.Gravel);
+        setCellsInRadiusTerrain(map, position, 8f, TerrainDefOf.Soil);
 
         // Spawn small additional holes.
         var smallHolesNumber = Rand.RangeInclusive(2, 5);
@@ -182,24 +179,24 @@ public class GenStep_CaveRoof : GenStep
         {
             var smallHolePosition =
                 position + (7f * Vector3Utility.HorizontalVectorFromAngle(Rand.Range(0, 360))).ToIntVec3();
-            SetCellsInRadiusNoRoofNoRock(map, smallHolePosition, 5f);
-            SetCellsInRadiusTerrain(map, smallHolePosition, 3.2f, TerrainDefOf.Soil);
-            SetCellsInRadiusTerrain(map, smallHolePosition, 2.1f, TerrainDef.Named("SoilRich"));
+            setCellsInRadiusNoRoofNoRock(map, smallHolePosition, 5f);
+            setCellsInRadiusTerrain(map, smallHolePosition, 3.2f, TerrainDefOf.Soil);
+            setCellsInRadiusTerrain(map, smallHolePosition, 2.1f, TerrainDef.Named("SoilRich"));
         }
 
-        SetCellsInRadiusTerrain(map, position, 6.5f, TerrainDef.Named("SoilRich"));
+        setCellsInRadiusTerrain(map, position, 6.5f, TerrainDef.Named("SoilRich"));
     }
 
-    private static void SpawnAnimalCorpsesMaker(Map map, IntVec3 position)
+    private static void spawnAnimalCorpsesMaker(Map map, IntVec3 position)
     {
         var animalCorpsesGenerator = ThingMaker.MakeThing(Util_CaveBiome.AnimalCorpsesGeneratorDef);
         GenSpawn.Spawn(animalCorpsesGenerator, position, map);
     }
 
-    private static void SpawnRitualStone(Map map, IntVec3 position)
+    private static void spawnRitualStone(Map map, IntVec3 position)
     {
         // Set terrain.
-        SetCellsInRadiusTerrain(map, position, 2.5f, TerrainDef.Named("FlagstoneSlate"));
+        setCellsInRadiusTerrain(map, position, 2.5f, TerrainDef.Named("FlagstoneSlate"));
         // Spawn ritual stone.
         var thing = ThingMaker.MakeThing(ThingDef.Named("Sarcophagus"), ThingDef.Named("BlocksSlate"));
         GenSpawn.Spawn(thing, position + new IntVec3(0, 0, -1), map);
@@ -218,7 +215,7 @@ public class GenStep_CaveRoof : GenStep
         // Spawn blood.
         foreach (var cell in GenRadial.RadialCellsAround(position, 2f, true))
         {
-            if (cell.InBounds(map) == false)
+            if (!cell.InBounds(map))
             {
                 continue;
             }
@@ -249,11 +246,11 @@ public class GenStep_CaveRoof : GenStep
         GenSpawn.Spawn(villagerCorpsesGenerator, position, map);
     }
 
-    private static void SetCellsInRadiusNoRoofNoRock(Map map, IntVec3 position, float radius)
+    private static void setCellsInRadiusNoRoofNoRock(Map map, IntVec3 position, float radius)
     {
         foreach (var cell in GenRadial.RadialCellsAround(position, radius, true))
         {
-            if (cell.InBounds(map) == false)
+            if (!cell.InBounds(map))
             {
                 continue;
             }
@@ -277,11 +274,11 @@ public class GenStep_CaveRoof : GenStep
         }
     }
 
-    private static void SetCellsInRadiusTerrain(Map map, IntVec3 position, float radius, TerrainDef terrain)
+    private static void setCellsInRadiusTerrain(Map map, IntVec3 position, float radius, TerrainDef terrain)
     {
         foreach (var cell in GenRadial.RadialCellsAround(position, radius, true))
         {
-            if (cell.InBounds(map) == false)
+            if (!cell.InBounds(map))
             {
                 continue;
             }

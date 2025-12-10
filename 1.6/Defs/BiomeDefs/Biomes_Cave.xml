@@ -13,7 +13,7 @@
     <soundsAmbient>
       <li>AmbientNightInsects_Standard</li>
     </soundsAmbient>
-	 <fishTypes MayRequire="Ludeon.RimWorld.Odyssey">
+    <fishTypes MayRequire="Ludeon.RimWorld.Odyssey">
       <freshwater_Common>
         <Fish_Bass MayRequire="Ludeon.RimWorld.Odyssey">1</Fish_Bass>
       </freshwater_Common>

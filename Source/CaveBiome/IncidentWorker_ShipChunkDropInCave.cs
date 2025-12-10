@@ -8,13 +8,13 @@ public class IncidentWorker_ShipChunkDropInCave : IncidentWorker_ShipChunkDrop
 {
     private static readonly Pair<int, float>[] CountChance =
     [
-        new Pair<int, float>(1, 1f),
-        new Pair<int, float>(2, 0.95f),
-        new Pair<int, float>(3, 0.7f),
-        new Pair<int, float>(4, 0.4f)
+        new(1, 1f),
+        new(2, 0.95f),
+        new(3, 0.7f),
+        new(4, 0.4f)
     ];
 
-    private int RandomCountToDrop
+    private static int RandomCountToDrop
     {
         get
         {
@@ -40,7 +40,7 @@ public class IncidentWorker_ShipChunkDropInCave : IncidentWorker_ShipChunkDrop
             return base.TryExecuteWorker(parms);
         }
 
-        TryFindShipChunkDropSpot(map, out var firstChunkPosition);
+        tryFindShipChunkDropSpot(map, out var firstChunkPosition);
         if (!firstChunkPosition.IsValid)
         {
             return false;
@@ -51,7 +51,7 @@ public class IncidentWorker_ShipChunkDropInCave : IncidentWorker_ShipChunkDrop
         GenSpawn.Spawn(ThingDefOf.ShipChunk, firstChunkPosition, map);
         for (var shipShunkIndex = 0; shipShunkIndex < partsCount - 1; shipShunkIndex++)
         {
-            TryFindShipChunkDropSpotNear(map, firstChunkPosition, out var nexChunkPosition);
+            tryFindShipChunkDropSpotNear(map, firstChunkPosition, out var nexChunkPosition);
             if (nexChunkPosition.IsValid)
             {
                 GenSpawn.Spawn(ThingDefOf.ShipChunk, nexChunkPosition, map);
@@ -63,13 +63,13 @@ public class IncidentWorker_ShipChunkDropInCave : IncidentWorker_ShipChunkDrop
         return true;
     }
 
-    private void TryFindShipChunkDropSpot(Map map, out IntVec3 spawnCell)
+    private void tryFindShipChunkDropSpot(Map map, out IntVec3 spawnCell)
     {
         spawnCell = IntVec3.Invalid;
         var caveWellsList = map.listerThings.ThingsOfDef(Util_CaveBiome.CaveWellDef);
         foreach (var caveWell in caveWellsList.InRandomOrder())
         {
-            if (!IsValidPositionToSpawnShipChunk(map, caveWell.Position))
+            if (!isValidPositionToSpawnShipChunk(map, caveWell.Position))
             {
                 continue;
             }
@@ -79,12 +79,12 @@ public class IncidentWorker_ShipChunkDropInCave : IncidentWorker_ShipChunkDrop
         }
     }
 
-    private void TryFindShipChunkDropSpotNear(Map map, IntVec3 root, out IntVec3 spawnCell)
+    private void tryFindShipChunkDropSpotNear(Map map, IntVec3 root, out IntVec3 spawnCell)
     {
         spawnCell = IntVec3.Invalid;
         foreach (var checkedPosition in GenRadial.RadialCellsAround(root, 5f, false))
         {
-            if (!IsValidPositionToSpawnShipChunk(map, checkedPosition))
+            if (!isValidPositionToSpawnShipChunk(map, checkedPosition))
             {
                 continue;
             }
@@ -94,19 +94,19 @@ public class IncidentWorker_ShipChunkDropInCave : IncidentWorker_ShipChunkDrop
         }
     }
 
-    private bool IsValidPositionToSpawnShipChunk(Map map, IntVec3 position)
+    private static bool isValidPositionToSpawnShipChunk(Map map, IntVec3 position)
     {
         var chunkDef = ThingDefOf.ShipChunk;
-        if (position.InBounds(map) == false
+        if (!position.InBounds(map)
             || position.Fogged(map)
-            || position.Standable(map) == false
+            || !position.Standable(map)
             || position.Roofed(map)
             && position.GetRoof(map).isThickRoof)
         {
             return false;
         }
 
-        if (position.SupportsStructureType(map, chunkDef.terrainAffordanceNeeded) == false)
+        if (!position.SupportsStructureType(map, chunkDef.terrainAffordanceNeeded))
         {
             return false;
         }

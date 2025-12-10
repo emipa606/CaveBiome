@@ -17,11 +17,11 @@ public class Building_VillagerCorpsesGenerator : Building
     {
         base.Tick();
 
-        GenerateVillagerCorpses();
+        generateVillagerCorpses();
         Destroy();
     }
 
-    private void GenerateVillagerCorpses()
+    private void generateVillagerCorpses()
     {
         var faction = Find.FactionManager.FirstFactionOfDef(FactionDef.Named("TribeCivil"));
         SpawnPawnCorpse(Map, Position, PawnKindDef.Named("Tribal_ChiefMelee"), faction, GenDate.TicksPerDay, true);
@@ -46,10 +46,10 @@ public class Building_VillagerCorpsesGenerator : Building
             pawn.inventory.DestroyAll();
         }
 
-        KillAndRotPawn(pawn, rotProgressInTicks);
+        killAndRotPawn(pawn, rotProgressInTicks);
     }
 
-    private static void KillAndRotPawn(Pawn pawn, float rotProgressInTicks)
+    private static void killAndRotPawn(Pawn pawn, float rotProgressInTicks)
     {
         HealthUtility.DamageUntilDead(pawn);
         foreach (var thing in pawn.Position.GetThingList(pawn.MapHeld))
@@ -60,10 +60,7 @@ public class Building_VillagerCorpsesGenerator : Building
             }
 
             var rotComp = thing.TryGetComp<CompRottable>();
-            if (rotComp != null)
-            {
-                rotComp.RotProgress = rotProgressInTicks;
-            }
+            rotComp?.RotProgress = rotProgressInTicks;
         }
     }
 }

@@ -30,21 +30,15 @@ public class MapComponent_CaveWellLight : MapComponent
     private static bool plantsMessageHasBeenSent;
     private static bool growingMessageHasBeenSent;
 
-    private static float glowRadiusCaveWellDay;
-    public static float glowRadiusCaveWellNight = 0f;
-
     private static ColorInt baseGlowColor;
     private static ColorInt currentGlowColor;
 
-    private int gamehourDebugMessage;
     private int nextLightCheckTick;
 
     public MapComponent_CaveWellLight(Map map) : base(map)
     {
-        InstantiateGlow();
+        instantiateGlow();
         nextLightCheckTick = 1;
-        gamehourDebugMessage = 0;
-        glowRadiusCaveWellDay = 10f;
         baseGlowColor = new ColorInt(370, 370, 370);
         currentGlowColor = new ColorInt(0, 0, 0);
     }
@@ -121,10 +115,10 @@ public class MapComponent_CaveWellLight : MapComponent
         var caveWellsList = map.listerThings.ThingsOfDef(Util_CaveBiome.CaveWellDef);
         foreach (var caveWell in caveWellsList)
         {
-            SetCaveWellBrightness(caveWell, caveWellBrightness);
+            setCaveWellBrightness(caveWell, caveWellBrightness);
         }
 
-        if (plantsMessageHasBeenSent == false && gamehour >= sunriseBeginHour + 1)
+        if (!plantsMessageHasBeenSent && gamehour >= sunriseBeginHour + 1)
         {
             Find.LetterStack.ReceiveLetter("CaveBiome.LetterLabelCavePlants".Translate(),
                 "CaveBiome.CavePlants".Translate(),
@@ -153,7 +147,7 @@ public class MapComponent_CaveWellLight : MapComponent
         growingMessageHasBeenSent = true;
     }
 
-    private void InstantiateGlow()
+    private static void instantiateGlow()
     {
         var compProps = DefDatabase<ThingDef>.GetNamed("CaveWell").CompDefFor<CompGlower>();
         if (compProps is not CompProperties_Glower glowerCompProps)
@@ -164,11 +158,9 @@ public class MapComponent_CaveWellLight : MapComponent
         baseGlowColor.r = glowerCompProps.glowColor.r;
         baseGlowColor.g = glowerCompProps.glowColor.g;
         baseGlowColor.b = glowerCompProps.glowColor.b;
-
-        glowRadiusCaveWellDay = glowerCompProps.glowRadius;
     }
 
-    private void SetCaveWellBrightness(Thing caveWell, float intensity)
+    private static void setCaveWellBrightness(Thing caveWell, float intensity)
     {
         var glowerComp = caveWell.TryGetComp<CompGlower>();
         if (glowerComp is null)

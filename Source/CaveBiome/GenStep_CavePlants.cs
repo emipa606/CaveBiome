@@ -52,7 +52,7 @@ public class GenStep_CavePlants : GenStep_Plants
                 newPlant.Growth = Rand.Range(ClusterPlant.minGrowthToReproduce, plantMaxGrowth);
 
                 var clusterIsMature = Rand.Value < 0.7f;
-                GrowCluster(newPlant, clusterIsMature);
+                growCluster(newPlant, clusterIsMature);
             }
             else
             {
@@ -65,7 +65,7 @@ public class GenStep_CavePlants : GenStep_Plants
         }
     }
 
-    private static void GrowCluster(ClusterPlant plant, bool clusterIsMature)
+    private static void growCluster(ClusterPlant plant, bool clusterIsMature)
     {
         var cluster = plant.cluster;
         int seedPlantsNumber;
@@ -98,7 +98,7 @@ public class GenStep_CavePlants : GenStep_Plants
             var growthRange = new FloatRange(plantMinGrowth, plantMaxGrowth);
 
             // Ignore temperature condition
-            GenClusterPlantReproduction.TryGrowCluster(cluster, checkTemperature: false, startingGrowth: growthRange);
+            GenClusterPlantReproduction.TryGrowCluster(cluster, false, growthRange);
         }
 
         if (!clusterIsMature || cluster.plantDef.symbiosisPlantDefEvolution == null)
@@ -113,6 +113,6 @@ public class GenStep_CavePlants : GenStep_Plants
         }
 
         symbiosisPlant.Growth = Rand.Range(plantMinGrowth, plantMaxGrowth);
-        GrowCluster(symbiosisPlant, true);
+        growCluster(symbiosisPlant, true);
     }
 }
