@@ -1,5 +1,8 @@
 # Changelog for CaveBiome
 
+1.6.1 - Fixed mechcluster patch
+
+
 1.6.0 - Updated to 1.6, thanks Zaljerem!
 Used DeepL to update translations for German, Russian
 
