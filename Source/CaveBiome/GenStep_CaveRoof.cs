@@ -13,7 +13,7 @@ public class GenStep_CaveRoof : GenStep
 
     public override int SeedPart => 647812558;
 
-    public override void Generate(Map map, GenStepParams genStepParams)
+    public override void Generate(Map map, GenStepParams parms)
     {
         if (map.Biome != Util_CaveBiome.CaveBiomeDef)
         {
@@ -66,7 +66,6 @@ public class GenStep_CaveRoof : GenStep
             }
         }
 
-        // TODO: should correct null region error? May be due to artificial buildings. River should avoid this.
         // Update regions and rooms now that cave wells are spawned.
         map.regionAndRoomUpdater.RebuildAllRegionsAndRooms();
     }
@@ -96,12 +95,9 @@ public class GenStep_CaveRoof : GenStep
             bool validator(IntVec3 cell)
             {
                 // Check cave well is not too close from another one.
-                foreach (var otherLoc in positionsList)
+                if (positionsList.Any(position => cell.InHorDistOf(position, DistanceBeetweenCaveWells)))
                 {
-                    if (cell.InHorDistOf(otherLoc, DistanceBeetweenCaveWells))
-                    {
-                        return false;
-                    }
+                    return false;
                 }
 
                 // Check cave well is connected to map edge.

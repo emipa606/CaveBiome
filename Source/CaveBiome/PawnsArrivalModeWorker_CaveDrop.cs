@@ -13,10 +13,10 @@ public class PawnsArrivalModeWorker_CaveDrop : PawnsArrivalModeWorker
         PawnsArrivalModeWorkerUtility.DropInDropPodsNearSpawnCenter(parms, pawns);
     }
 
-    public override void TravellingTransportersArrived(List<ActiveTransporterInfo> dropPods, Map map)
+    public override void TravellingTransportersArrived(List<ActiveTransporterInfo> transporters, Map map)
     {
         var near = findAGoodSpot(map);
-        TransportersArrivalActionUtility.DropTravellingDropPods(dropPods, near, map);
+        TransportersArrivalActionUtility.DropTravellingDropPods(transporters, near, map);
     }
 
     public override bool TryResolveRaidSpawnCenter(IncidentParms parms)

@@ -67,52 +67,46 @@ public class GenStep_CavePlants : GenStep_Plants
 
     private static void growCluster(ClusterPlant plant, bool clusterIsMature)
     {
-        var cluster = plant.cluster;
-        int seedPlantsNumber;
-        if (clusterIsMature)
+        while (true)
         {
-            seedPlantsNumber = cluster.desiredSize - 1; // The first plant is already spawned.
+            var cluster = plant.cluster;
+            int seedPlantsNumber;
+            if (clusterIsMature)
+            {
+                seedPlantsNumber = cluster.desiredSize - 1; // The first plant is already spawned.
+            }
+            else
+            {
+                seedPlantsNumber = (int)(cluster.desiredSize * Rand.Range(0.25f, 0.75f));
+            }
+
+            if (seedPlantsNumber == 0)
+            {
+                return;
+            }
+
+            for (var seedPlantIndex = 0; seedPlantIndex < seedPlantsNumber; seedPlantIndex++)
+            {
+                var growthRange = new FloatRange(plantMinGrowth, plantMaxGrowth);
+
+                // Ignore temperature condition
+                GenClusterPlantReproduction.TryGrowCluster(cluster, false, growthRange);
+            }
+
+            if (!clusterIsMature || cluster.plantDef.symbiosisPlantDefEvolution == null)
+            {
+                return;
+            }
+
+            var symbiosisPlant = GenClusterPlantReproduction.TrySpawnNewSymbiosisCluster(cluster);
+            if (symbiosisPlant == null)
+            {
+                return;
+            }
+
+            symbiosisPlant.Growth = Rand.Range(plantMinGrowth, plantMaxGrowth);
+            plant = symbiosisPlant;
+            clusterIsMature = true;
         }
-        else
-        {
-            seedPlantsNumber = (int)(cluster.desiredSize * Rand.Range(0.25f, 0.75f));
-        }
-
-        if (seedPlantsNumber == 0)
-        {
-            return;
-        }
-
-        //for (var seedPlantIndex = 0; seedPlantIndex < seedPlantsNumber; seedPlantIndex++)
-        // {
-        //     var seedPlant =
-        //         GenClusterPlantReproduction.TryGrowCluster(cluster, false); // Ignore temperature condition.
-        //     if (seedPlant != null)
-        //     {
-        //         seedPlant.Growth = Rand.Range(plantMinGrowth, plantMaxGrowth);
-        //     }
-        //  }
-
-        for (var seedPlantIndex = 0; seedPlantIndex < seedPlantsNumber; seedPlantIndex++)
-        {
-            var growthRange = new FloatRange(plantMinGrowth, plantMaxGrowth);
-
-            // Ignore temperature condition
-            GenClusterPlantReproduction.TryGrowCluster(cluster, false, growthRange);
-        }
-
-        if (!clusterIsMature || cluster.plantDef.symbiosisPlantDefEvolution == null)
-        {
-            return;
-        }
-
-        var symbiosisPlant = GenClusterPlantReproduction.TrySpawnNewSymbiosisCluster(cluster);
-        if (symbiosisPlant == null)
-        {
-            return;
-        }
-
-        symbiosisPlant.Growth = Rand.Range(plantMinGrowth, plantMaxGrowth);
-        growCluster(symbiosisPlant, true);
     }
 }

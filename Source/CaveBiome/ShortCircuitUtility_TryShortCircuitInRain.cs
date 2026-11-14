@@ -5,9 +5,9 @@ using Verse;
 namespace CaveBiome;
 
 [HarmonyPatch(typeof(ShortCircuitUtility), "TryShortCircuitInRain", typeof(Thing))]
-public class ShortCircuitUtility_TryShortCircuitInRain
+public static class ShortCircuitUtility_TryShortCircuitInRain
 {
-    private static bool Prefix(Thing thing, ref bool __result)
+    public static bool Prefix(Thing thing, ref bool __result)
     {
         if (thing.Map.Biome != Util_CaveBiome.CaveBiomeDef)
         {

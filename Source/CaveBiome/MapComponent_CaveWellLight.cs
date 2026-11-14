@@ -71,7 +71,7 @@ public class MapComponent_CaveWellLight : MapComponent
         var gamehour = GenDate.HoursPerDay *
                        GenDate.DayPercent(Find.TickManager.TicksAbs,
                            Find.WorldGrid.LongLatOf(map.Tile)
-                               .x); // TODO: could refine to accommodate axial tilt, such that high latitudes will have "midnight sun" growing areas... nifty.
+                               .x);
         float caveWellBrightness;
         if (map.gameConditionManager.ConditionIsActive(GameConditionDefOf.Eclipse))
         {

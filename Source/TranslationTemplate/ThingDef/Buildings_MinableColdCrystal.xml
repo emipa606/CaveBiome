@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: cold crystal -->
+  <MineableColdCrystal.label>cold crystal</MineableColdCrystal.label>
+  <!-- EN: Some strange crystals burried in the rocks. As bright as it is cold, it lights the suroundings. -->
+  <MineableColdCrystal.description>Some strange crystals burried in the rocks. As bright as it is cold, it lights the suroundings.</MineableColdCrystal.description>
+</LanguageData>

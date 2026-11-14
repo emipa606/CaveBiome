@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: calm -->
+  <CaveCalm.label>calm</CaveCalm.label>
+  <!-- EN: A calm cave moment. No penalties or modifiers. -->
+  <CaveCalm.description>A calm cave moment. No penalties or modifiers.</CaveCalm.description>
+  <!-- EN: fog -->
+  <CaveFog.label>fog</CaveFog.label>
+  <!-- EN: Fog reduces the accuracy of ranged weapons as if darkness was not enough... Global humidity level is surprisingly high in caves. -->
+  <CaveFog.description>Fog reduces the accuracy of ranged weapons as if darkness was not enough... Global humidity level is surprisingly high in caves.</CaveFog.description>
+  <!-- EN: hard snow -->
+  <CaveHardSnow.label>hard snow</CaveHardSnow.label>
+  <!-- EN: Snow reduces the accuracy of ranged weapons, extinguishes fire, and slows people down. -->
+  <CaveHardSnow.description>Snow reduces the accuracy of ranged weapons, extinguishes fire, and slows people down.</CaveHardSnow.description>
+  <!-- EN: cave storm -->
+  <CaveStorm.label>cave storm</CaveStorm.label>
+  <!-- EN: Cave storm happen when large surface tempest occur. The powerful winds will slow down people a lot. -->
+  <CaveStorm.description>Cave storm happen when large surface tempest occur. The powerful winds will slow down people a lot.</CaveStorm.description>
+</LanguageData>

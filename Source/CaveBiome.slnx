@@ -6,4 +6,45 @@
     <BuildType Name="Release" />
   </Configurations>
   <Project Path="CaveBiome/CaveBiome.csproj" />
+  <Folder Name="/XML/1.7/Defs/MapGeneration/">
+    <File Path="../1.7/Defs/MapGeneration/MapGenerators.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/BiomeDefs/">
+    <File Path="../1.7/Defs/BiomeDefs/Biomes_Cave.xml" />
+  </Folder>
+  <Folder Name="/XML/About/">
+    <File Path="../About/about.xml" />
+  </Folder>
+  <Folder Name="/XML/Languages/English/Keyed/">
+    <File Path="../Languages/English/Keyed/CaveBiome_Strings.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/ThingDefs_Buildings/">
+    <File Path="../1.7/Defs/ThingDefs_Buildings/Building_Special_CorpsesGenerator.xml" />
+    <File Path="../1.7/Defs/ThingDefs_Buildings/Buildings_CaveRoof.xml" />
+    <File Path="../1.7/Defs/ThingDefs_Buildings/Buildings_CaveWell.xml" />
+    <File Path="../1.7/Defs/ThingDefs_Buildings/Buildings_CrystalLamp.xml" />
+    <File Path="../1.7/Defs/ThingDefs_Buildings/Buildings_MinableColdCrystal.xml" />
+    <File Path="../1.7/Defs/ThingDefs_Buildings/Buildings_MortarsLowTrajectory.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/PawnsArrivalModeDefs/">
+    <File Path="../1.7/Defs/PawnsArrivalModeDefs/PawnsArrivalModes.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/ThingDefs_Items/">
+    <File Path="../1.7/Defs/ThingDefs_Items/Items_Resource_ColdCrystal.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Patches/">
+    <File Path="../1.7/Patches/Buildings_Mortars.xml" />
+    <File Path="../1.7/Patches/Buildings_SolarGenerator.xml" />
+    <File Path="../1.7/Patches/CommonMapGenerator.xml" />
+    <File Path="../1.7/Patches/Incidents_Map_Misc.xml" />
+    <File Path="../1.7/Patches/Incidents_Map_Special.xml" />
+    <File Path="../1.7/Patches/Incidents_Map_Threats.xml" />
+    <File Path="../1.7/Patches/ZLevelsPatch.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/MapConditionDefs/">
+    <File Path="../1.7/Defs/MapConditionDefs/MapConditions_Cave.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/WeatherDefs/">
+    <File Path="../1.7/Defs/WeatherDefs/Weathers.xml" />
+  </Folder>
 </Solution>

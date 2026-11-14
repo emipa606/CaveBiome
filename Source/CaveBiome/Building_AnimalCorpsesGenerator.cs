@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using System.Linq;
+using RimWorld;
 using Verse;
 
 namespace CaveBiome;
@@ -53,20 +54,7 @@ public class Building_AnimalCorpsesGenerator : Building
 
             bool validator(IntVec3 cell)
             {
-                if (!cell.Standable(Map))
-                {
-                    return false;
-                }
-
-                foreach (var thing in Map.thingGrid.ThingsListAt(cell))
-                {
-                    if (thing is Corpse)
-                    {
-                        return false;
-                    }
-                }
-
-                return true;
+                return cell.Standable(Map) && Map.thingGrid.ThingsListAt(cell).All(thing => thing is not Corpse);
             }
         }
     }

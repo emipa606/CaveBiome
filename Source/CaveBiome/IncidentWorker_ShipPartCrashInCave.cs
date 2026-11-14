@@ -72,14 +72,14 @@ public abstract class IncidentWorker_ShipPartCrashInCave : IncidentWorker_Crashe
     {
         spawnCell = IntVec3.Invalid;
         var caveWellsList = map.listerThings.ThingsOfDef(Util_CaveBiome.CaveWellDef);
-        foreach (var caveWell in caveWellsList.InRandomOrder())
+        foreach (var caveWell in caveWellsList.Select(well => well.Position).InRandomOrder())
         {
-            if (!isValidPositionForShipCrashSite(map, caveWell.Position))
+            if (!isValidPositionForShipCrashSite(map, caveWell))
             {
                 continue;
             }
 
-            spawnCell = caveWell.Position;
+            spawnCell = caveWell;
             return;
         }
     }
@@ -92,16 +92,9 @@ public abstract class IncidentWorker_ShipPartCrashInCave : IncidentWorker_Crashe
             return false;
         }
 
-        foreach (var checkedPosition in GenAdj.CellsOccupiedBy(position, Rot4.North, def.mechClusterBuilding.size))
-        {
-            if (!checkedPosition.Standable(map)
-                || checkedPosition.Roofed(map)
-                || !map.reachability.CanReachColony(checkedPosition))
-            {
-                return false;
-            }
-        }
-
-        return true;
+        return GenAdj.CellsOccupiedBy(position, Rot4.North, def.mechClusterBuilding.size).All(checkedPosition =>
+            checkedPosition.Standable(map)
+            && !checkedPosition.Roofed(map)
+            && map.reachability.CanReachColony(checkedPosition));
     }
 }

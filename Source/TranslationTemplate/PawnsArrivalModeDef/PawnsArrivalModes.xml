@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: A group of {0} from {1} have dropped in a nearby cave-opening! -->
+  <CaveDrop.textEnemy>A group of {0} from {1} have dropped in a nearby cave-opening!</CaveDrop.textEnemy>
+  <!-- EN: A group of friendly {0} from {1} have dropped in a nearby cave-opening! -->
+  <CaveDrop.textFriendly>A group of friendly {0} from {1} have dropped in a nearby cave-opening!</CaveDrop.textFriendly>
+  <!-- EN: {0_pawnsPluralDef} will arrive in transport pods a nearby cave-opening. -->
+  <CaveDrop.textWillArrive>{0_pawnsPluralDef} will arrive in transport pods a nearby cave-opening.</CaveDrop.textWillArrive>
+</LanguageData>

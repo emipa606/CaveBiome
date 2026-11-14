@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using System.Linq;
+using RimWorld;
 using Verse;
 
 namespace CaveBiome;
@@ -38,14 +39,14 @@ public class IncidentWorker_ResourcePodCrashInCave : IncidentWorker_ResourcePodC
     {
         spawnCell = IntVec3.Invalid;
         var caveWellsList = map.listerThings.ThingsOfDef(Util_CaveBiome.CaveWellDef);
-        foreach (var caveWell in caveWellsList.InRandomOrder())
+        foreach (var caveWellPostition in caveWellsList.Select(well => well.Position).InRandomOrder())
         {
-            if (!isValidPositionToSpawnDropPod(map, caveWell.Position))
+            if (!isValidPositionToSpawnDropPod(map, caveWellPostition))
             {
                 continue;
             }
 
-            spawnCell = caveWell.Position;
+            spawnCell = caveWellPostition;
             return;
         }
     }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: cave environment -->
+  <CaveEnvironment.label>cave environment</CaveEnvironment.label>
+  <!-- EN: Even with the local glowing flora, it is hard to see anything in caves. Torches and lamps should avoid claustrophobia crisis. -->
+  <CaveEnvironment.description>Even with the local glowing flora, it is hard to see anything in caves. Torches and lamps should avoid claustrophobia crisis.</CaveEnvironment.description>
+</LanguageData>

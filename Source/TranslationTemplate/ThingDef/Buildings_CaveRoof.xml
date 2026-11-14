@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: cave roof -->
+  <CaveRoof.label>cave roof</CaveRoof.label>
+  <!-- EN: A very high cave roof. It blocks anything coming from the surface. -->
+  <CaveRoof.description>A very high cave roof. It blocks anything coming from the surface.</CaveRoof.description>
+</LanguageData>

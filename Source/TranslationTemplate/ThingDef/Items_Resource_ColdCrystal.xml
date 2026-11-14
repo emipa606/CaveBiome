@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: cold crystal -->
+  <ColdCrystal.label>cold crystal</ColdCrystal.label>
+  <!-- EN: As hard as it is cold, this strange crystal can be used to light an area. It seems to absorb any heat though. -->
+  <ColdCrystal.description>As hard as it is cold, this strange crystal can be used to light an area. It seems to absorb any heat though.</ColdCrystal.description>
+</LanguageData>

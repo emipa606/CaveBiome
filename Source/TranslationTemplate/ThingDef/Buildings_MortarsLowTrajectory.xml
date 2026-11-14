@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: cave mortar -->
+  <Artillery_MortarCave.label>cave mortar</Artillery_MortarCave.label>
+  <!-- EN: Mortar launcher for caves. Lobs bombs over walls. Very inaccurate but long-ranged. -->
+  <Artillery_MortarCave.description>Mortar launcher for caves. Lobs bombs over walls. Very inaccurate but long-ranged.</Artillery_MortarCave.description>
+  <!-- EN: cave mortar -->
+  <Artillery_MortarCave.verbs.Verb_Shoot.label>cave mortar</Artillery_MortarCave.verbs.Verb_Shoot.label>
+  <!-- EN: cave mortar (low trajectory) -->
+  <Turret_MortarCave.label>cave mortar (low trajectory)</Turret_MortarCave.label>
+  <!-- EN: A mortar that launches explosive shells. Must be manned. Explodes when damaged. Uses direct low trajectory: requires a direct line of sight and reduces range but increases accuracy. Can be used in a cave -->
+  <Turret_MortarCave.description>A mortar that launches explosive shells. Must be manned. Explodes when damaged. Uses direct low trajectory: requires a direct line of sight and reduces range but increases accuracy. Can be used in a cave</Turret_MortarCave.description>
+</LanguageData>

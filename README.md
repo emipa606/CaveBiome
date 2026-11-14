@@ -34,4 +34,4 @@ See the forum thread for content/changelog and related mods. https://ludeon.com/
 
  
 
-[![Image](https://img.shields.io/github/v/release/emipa606/CaveBiome?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2259124387) | tags: settlement, underground
+[![Image](https://img.shields.io/github/v/release/emipa606/CaveBiome?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2259124387) | settlement, underground

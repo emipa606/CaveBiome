@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using System.Linq;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -63,23 +64,23 @@ public class IncidentWorker_ShipChunkDropInCave : IncidentWorker_ShipChunkDrop
         return true;
     }
 
-    private void tryFindShipChunkDropSpot(Map map, out IntVec3 spawnCell)
+    private static void tryFindShipChunkDropSpot(Map map, out IntVec3 spawnCell)
     {
         spawnCell = IntVec3.Invalid;
         var caveWellsList = map.listerThings.ThingsOfDef(Util_CaveBiome.CaveWellDef);
-        foreach (var caveWell in caveWellsList.InRandomOrder())
+        foreach (var caveWell in caveWellsList.Select(well => well.Position).InRandomOrder())
         {
-            if (!isValidPositionToSpawnShipChunk(map, caveWell.Position))
+            if (!isValidPositionToSpawnShipChunk(map, caveWell))
             {
                 continue;
             }
 
-            spawnCell = caveWell.Position;
+            spawnCell = caveWell;
             return;
         }
     }
 
-    private void tryFindShipChunkDropSpotNear(Map map, IntVec3 root, out IntVec3 spawnCell)
+    private static void tryFindShipChunkDropSpotNear(Map map, IntVec3 root, out IntVec3 spawnCell)
     {
         spawnCell = IntVec3.Invalid;
         foreach (var checkedPosition in GenRadial.RadialCellsAround(root, 5f, false))
@@ -112,10 +113,10 @@ public class IncidentWorker_ShipChunkDropInCave : IncidentWorker_ShipChunkDrop
         }
 
         var thingList = position.GetThingList(map);
-        foreach (var thing in thingList)
+        foreach (var thing in thingList.Select(t => t.def))
         {
-            if (thing.def.category != ThingCategory.Plant
-                && GenSpawn.SpawningWipes(chunkDef, thing.def))
+            if (thing.category != ThingCategory.Plant
+                && GenSpawn.SpawningWipes(chunkDef, thing))
             {
                 return false;
             }
